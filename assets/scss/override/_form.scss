@@ -1,0 +1,124 @@
+:dir(ltr) {
+  // Input File
+  .custom-file {
+    &.b-form-file {
+      .custom-file-label {
+        border-top-right-radius: 0.357rem !important;
+        border-bottom-right-radius: 0.357rem !important;
+      }
+    }
+  }
+
+  // V-Select
+  .vs__dropdown-toggle {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+:dir(rtl) {
+  .input-group {
+    // Inputs
+    > .input-group-prepend {
+      margin-right: unset !important;
+      margin-left: -1px !important;
+      > .btn,
+      > .input-group-text {
+        border-top-right-radius: 0.357rem !important;
+        border-bottom-right-radius: 0.357rem !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-left: none !important;
+      }
+    }
+
+    // Inputs
+    > .input-group-append:last-child {
+      > .btn:not(:last-child):not(.dropdown-toggle),
+      > .input-group-text:not(:last-child) {
+        border-top-right-radius: 0.357rem !important;
+        border-bottom-right-radius: 0.357rem !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-left: none !important;
+      }
+    }
+
+    // V-Select
+    > .form-control:not(:first-child),
+    > .custom-select:not(:first-child) {
+      border-top-left-radius: 0.357rem !important;
+      border-bottom-left-radius: 0.357rem !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    // V-Select
+    .vs__dropdown-toggle {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    // Input File
+    > .custom-file:not(:first-child) {
+      .custom-file-label {
+        border-top-left-radius: 0.357rem !important;
+        border-bottom-left-radius: 0.357rem !important;
+        &::after {
+          left: 0;
+          right: unset;
+          border-right: inherit !important;
+          border-left: none !important;
+        }
+      }
+    }
+
+    &.table-search {
+      .form-control {
+        border-top-right-radius: 0.357rem !important;
+        border-bottom-right-radius: 0.357rem !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+      .input-group-append {
+        .btn {
+          border-top-left-radius: 0.357rem !important;
+          border-bottom-left-radius: 0.357rem !important;
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+        }
+      }
+    }
+
+    // Inputs
+    &.append-icon-input {
+      .form-control {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+
+      .input-group-append {
+        .input-group-text {
+          border-top-left-radius: 0.357rem !important;
+          border-bottom-left-radius: 0.357rem !important;
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+          border-right: none !important;
+          .v-select {
+            .vs__dropdown-menu {
+              min-width: 400px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.v-select {
+  &.table-filter {
+    .vs__dropdown-toggle {
+      border-radius: 0.357rem !important;
+    }
+  }
+}

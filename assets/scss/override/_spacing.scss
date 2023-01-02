@@ -1,0 +1,43 @@
+:dir(rtl) {
+  .ml-auto,
+  .mx-auto {
+    margin-left: unset !important;
+    margin-right: auto !important;
+  }
+
+  @media (min-width: 992px) {
+    .ml-lg-auto,
+    .mx-lg-auto {
+      margin-left: unset !important;
+      margin-right: auto !important;
+    }
+
+    .mr-lg-auto,
+    .mx-lg-auto {
+      margin-right: unset !important;
+      margin-left: auto !important;
+    }
+  }
+
+  .ml-50,
+  .mx-50 {
+    margin-left: unset !important;
+    margin-right: 0.5rem !important;
+  }
+
+  .ml-1,
+  .mx-1 {
+    margin-left: unset !important;
+    margin-right: 1rem !important;
+  }
+
+  .ml-2,
+  .mx-2 {
+    margin-left: unset !important;
+    margin-right: 1.5rem !important;
+  }
+
+  .text-right {
+    text-align: left !important;
+  }
+}
