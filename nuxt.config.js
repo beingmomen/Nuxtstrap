@@ -126,6 +126,10 @@ export default {
     baseURL: 'http://127.0.0.1:5678/api/v1'
   },
 
+  generate: {
+    fallback: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   publicRuntimeConfig: {
