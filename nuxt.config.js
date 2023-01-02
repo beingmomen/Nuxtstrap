@@ -133,7 +133,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   publicRuntimeConfig: {
-    SITE_TITLE: 'MaronX',
+    SITE_TITLE: 'Nuxtstrap',
     NODE_URL_images: 'http://127.0.0.1:5678/images/'
   }
 }
