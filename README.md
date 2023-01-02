@@ -1,4 +1,5 @@
-# Vuxy-Nuxt
+# Nuxtstrap
+
 
 ## Build Setup
 
