@@ -30,7 +30,8 @@ export default {
     '~/plugins/settings/layout.js',
     { src: '~/plugins/settings/lottie-player.js', mode: 'client' },
     '~/plugins/settings/vee-validate.js',
-    '~/plugins/catchError.js'
+    '~/plugins/catchError.js',
+    '~/plugins/firebase.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -123,7 +124,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'https://lakohouseapi-3r7n.onrender.com/api/v1',
-    baseURL: 'http://127.0.0.1:5678/api/v1'
+    // baseURL: 'http://127.0.0.1:5678/api/v1'
   },
 
   generate: {
@@ -131,7 +132,9 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    vendor: ['firebase']
+  },
   publicRuntimeConfig: {
     SITE_TITLE: 'Nuxtstrap',
     NODE_URL_images: 'http://127.0.0.1:5678/images/'
