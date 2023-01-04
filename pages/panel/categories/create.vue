@@ -16,10 +16,10 @@
             store-key="englishName"
           />
 
-          <FormFFile
+          <FormFInputIcon
             :label="$t('image')"
             :module-name="moduleName"
-            preview="categories"
+            icon="user"
             store-key="image"
           />
         </template>

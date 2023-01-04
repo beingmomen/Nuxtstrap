@@ -45,14 +45,15 @@
         md="12"
       />
 
-      <FormFPasswordIcon
-        :label="$t('inputs.passwordConfirm')"
-        store-key="passwordConfirm"
+      <FormFInputIcon
+        :label="$t('image_url')"
+        store-key="url"
         :module-name="moduleName"
         lg="12"
         md="12"
       />
     </template>
+
     <template #pages>
       <span class="fs-4">{{ $t('register.already') }}</span>
       <b-link :to="localePath('/login')">

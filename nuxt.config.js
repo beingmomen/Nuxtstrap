@@ -31,7 +31,8 @@ export default {
     { src: '~/plugins/settings/lottie-player.js', mode: 'client' },
     '~/plugins/settings/vee-validate.js',
     '~/plugins/catchError.js',
-    '~/plugins/firebase.js'
+    '~/plugins/firebase.js',
+    '~/plugins/onAuthStateChanged.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -107,15 +108,15 @@ export default {
         },
         endpoints: {
           login: { url: '/users/login', method: 'post' },
-          user: { url: '/users/me', method: 'get' }
-          // user: false,
+          // user: { url: '/users/me', method: 'get' }
+          user: false
         }
       }
     },
     redirect: {
       login: '/panel',
       logout: '/login',
-      callback: '/login',
+      callback: '/panel',
       home: '/panel'
     }
   },
@@ -132,9 +133,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    vendor: ['firebase']
-  },
+  build: {},
   publicRuntimeConfig: {
     SITE_TITLE: 'Nuxtstrap',
     NODE_URL_images: 'http://127.0.0.1:5678/images/'

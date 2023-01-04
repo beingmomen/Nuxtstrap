@@ -14,14 +14,15 @@
 </template>
 
 <script>
+import { getAuth } from 'firebase/auth'
 export default {
   name: 'Admins',
   layout: 'panel',
   async asyncData({ $axios, store }) {
-    const data = await $axios.$get('/users', {
-      params: { role: 'admin' }
-    })
-    store.dispatch('panel/admins/getAllDataFromApi', data)
+    // const data = await $axios.$get('/users', {
+    //   params: { role: 'admin' }
+    // })
+    // store.dispatch('panel/admins/getAllDataFromApi', data)
   },
   data() {
     return {
@@ -47,6 +48,14 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    getAuth()
+      .getUser('IbAeLZTo3VO46YQwEwAVgLwDYKH2')
+      .then((userRecord, i) => {
+        // See the UserRecord reference doc for the contents of userRecord.
+        console.warn(`Successfully fetched user data: ${userRecord}`)
+      })
   }
 }
 </script>

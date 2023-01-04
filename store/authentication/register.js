@@ -1,4 +1,8 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile
+} from 'firebase/auth'
 
 export const state = () => ({
   fields: {
@@ -7,7 +11,8 @@ export const state = () => ({
     password: null,
     passwordConfirm: null,
     phoneCode: '+20',
-    phone: null
+    phone: null,
+    url: null
   }
 })
 
@@ -27,21 +32,18 @@ export const actions = {
     await dispatch('firebaseSubmit')
   },
   async firebaseSubmit({ state }) {
-    console.warn('state', state.fields)
     try {
       const auth = getAuth()
-      const userCredential = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         state.fields.email,
         state.fields.password
       )
-      console.warn('user', userCredential.user)
 
-      // Update the user's display name and phone number.
-      const user = userCredential.user
-      await user.updateProfile({
+      await updateProfile(auth.currentUser, {
+        phoneNumber: state.fields.phone,
         displayName: state.fields.name,
-        phoneNumber: state.fields.phone
+        photoURL: state.fields.url || 'https://placeimg.com/80/80/people'
       })
     } catch (error) {
       console.warn('error', error)

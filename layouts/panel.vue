@@ -62,7 +62,7 @@ export default {
 
   mounted() {
     // eslint-disable-next-line arrow-parens
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
       if (e.target.classList.contains('menu-open')) {
         this.$store.dispatch('toggleSidebar')
       }

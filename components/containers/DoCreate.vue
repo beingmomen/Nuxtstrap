@@ -60,9 +60,9 @@ export default {
       try {
         await this.$store.dispatch(`${this.moduleName}/addDataToDB`)
         await this.$toast.success(this.$t('msg.add'))
-        await this.$router.push(
-          this.$route.path.replace(this.localePath('/create'), '')
-        )
+        // await this.$router.push(
+        //   this.$route.path.replace(this.localePath('/create'), '')
+        // )
         await this.$store.dispatch(`${this.moduleName}/resetData`)
       } catch (error) {
       } finally {

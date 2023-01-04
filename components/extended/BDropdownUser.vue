@@ -9,7 +9,7 @@
       <template #button-content>
         <div class="d-sm-flex d-none user-nav align-items-start">
           <p class="user-name font-weight-bolder fs-5 mb-0">
-            MaronX
+            {{ $config.SITE_TITLE }}
           </p>
           <span class="user-status">{{ $t('admin') }}</span>
         </div>
@@ -31,21 +31,23 @@
 
       <b-dropdown-divider />
 
-      <ExtendedBDropdownItem
-        icon="log-out"
-        :title="$t('navbar.logout')"
-        @click.native="logout"
-      />
+      <b-dropdown-item link-class="d-flex align-items-center" @click="logout">
+        <UtilsTheFIcon icon="log-out" />
+        <span class="fs-5 ml-1">{{ $t('logout') }}</span>
+      </b-dropdown-item>
     </b-nav-item-dropdown>
   </li>
 </template>
 
 <script>
+import { getAuth, signOut } from 'firebase/auth'
+
 export default {
   methods: {
     logout() {
       this.$auth.logout()
-      this.$auth.strategy.token.reset()
+      const auth = getAuth()
+      signOut(auth)
     }
   }
 }

@@ -33,6 +33,8 @@
   "images" : "Images",
   "actions": "Actions",
   "more_page": "More Page",
+  "image_url": "Image URL",
+  "logout": "logout",
 
 
   "login": {

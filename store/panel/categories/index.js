@@ -1,3 +1,18 @@
+import {
+  collection,
+  // onSnapshot,
+  addDoc,
+  // getDocs,
+  getFirestore,
+  // query,
+  // limit,
+  // startAfter,
+  // orderBy,
+  serverTimestamp
+  // startAt,
+  // offset
+} from 'firebase/firestore'
+
 export const state = () => ({
   apiModule: '/categories',
   table: {
@@ -5,7 +20,8 @@ export const state = () => ({
     allData: [],
     filters: [],
     search: null,
-    page: null
+    page: 1,
+    lastVisible: null
   },
   fields: {
     arabicName: null,
@@ -20,17 +36,17 @@ export const getters = {
 }
 
 export const actions = {
-  getAllDataFromApi({ commit }, { total, data }) {
-    commit('setTableValue', { key: 'totalItems', value: total })
-    commit('setTableValue', { key: 'allData', value: data.data })
+  async getAllDataFromApi({ commit }, { data, total }) {
+    await commit('setTableValue', { key: 'allData', value: data })
+    await commit('setTableValue', { key: 'totalItems', value: total })
   },
 
-  async addDataToDB({ state, dispatch, rootState }) {
-    const userId = rootState.auth.user._id
-    const payload = { ...state.fields, user: userId }
-    const storePath = 'handlerFactory/handleFormData'
-    const data = await dispatch(storePath, payload, { root: true })
-    return this.$axios.$post(`${state.apiModule}`, data)
+  async addDataToDB({ state }) {
+    const db = getFirestore()
+    await addDoc(collection(db, state.apiModule), {
+      ...state.fields,
+      createdAt: serverTimestamp()
+    })
   },
 
   async updateDataInDB({ state, dispatch }, payload) {
@@ -45,16 +61,54 @@ export const actions = {
     }
   },
 
-  async getDataByQuery({ state, dispatch }) {
-    const params = {
-      page: state.table.page || 1,
-      search: state.table.search
-    }
-    const data = await this.$axios.$get(state.apiModule, {
-      params
-    })
-
-    dispatch('getAllDataFromApi', data)
+  async getDataByQuery({ state, commit }) {
+    // const db = await getFirestore()
+    // const q = query(
+    //   collection(db, 'categories'),
+    //   orderBy('createdAt'),
+    //   offset(22),
+    //   limit(10)
+    // )
+    // const { docs } = await getDocs(q)
+    // const data = await docs.map(doc => ({
+    //   ...doc.data(),
+    //   id: doc.id
+    // }))
+    // console.warn('data', data)
+    // const documentSnapshots = await getDocs(first)
+    // // Get the last visible document
+    // const lastVisible =
+    //   documentSnapshots.docs[documentSnapshots.docs.length - 1]
+    // console.log('last', lastVisible)
+    // // Construct a new query starting at this document,
+    // // get the next 25 cities.
+    // const next = query(
+    //   collection(db, 'cities'),
+    //   orderBy('population'),
+    //   limit(25)
+    // )
+    // const { size } = await getDocs(collection(db, 'categories'))
+    // const q = await query(
+    //   collection(db, 'categories'),
+    //   orderBy('createdAt'),
+    //   limit(10)
+    // )
+    // const startPoint = (state.table.page - 1) * 10
+    // const snapshot = await getDocs(q)
+    // const lastDoc = snapshot.docs[startPoint]
+    // const next = query(
+    //   collection(db, 'categories'),
+    //   orderBy('createdAt'),
+    //   startAfter(lastDoc),
+    //   limit(10)
+    // )
+    // const { docs } = await getDocs(next)
+    // const data = await docs.map(doc => ({
+    //   ...doc.data(),
+    //   id: doc.id
+    // }))
+    // await commit('setTableValue', { key: 'allData', value: data })
+    // await commit('setTableValue', { key: 'totalItems', value: size })
   },
 
   deleteFromDB({ state }, payload) {
@@ -63,11 +117,8 @@ export const actions = {
 
   resetData({ commit, state }) {
     Object.keys(state.fields).forEach((field, i) => {
-      if (field !== 'phoneCode') {
-        commit('setFieldValue', { key: field, value: null })
-      }
+      commit('setFieldValue', { key: field, value: null })
     })
-    commit('setFieldValue', { key: 'phoneCode', value: '+20' })
   }
 }
 
