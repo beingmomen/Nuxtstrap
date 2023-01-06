@@ -5,12 +5,12 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB9UHObvwef_jynxIGcFN93eujffX3mNmc',
-  authDomain: 'nuxtstrap.firebaseapp.com',
-  projectId: 'nuxtstrap',
-  storageBucket: 'nuxtstrap.appspot.com',
-  messagingSenderId: '546162343698',
-  appId: '1:546162343698:web:3bd95b4fc4e670b0effdcb'
+  apiKey: 'AIzaSyC8nfZnagAlsna5aVkylZ4C0AFQ6wNlJ2Y',
+  authDomain: 'nuxtstrap-999a5.firebaseapp.com',
+  projectId: 'nuxtstrap-999a5',
+  storageBucket: 'nuxtstrap-999a5.appspot.com',
+  messagingSenderId: '455970293575',
+  appId: '1:455970293575:web:3356a506ec2945797aee62'
 }
 
 // Initialize Firebase

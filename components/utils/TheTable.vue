@@ -115,6 +115,7 @@ import {
   limit,
   // startAfter,
   orderBy
+  // skip
   // serverTimestamp
   // startAt,
   // offset
@@ -184,26 +185,23 @@ export default {
   watch: {
     async currentPage(newValue) {
       const db = await getFirestore()
-
       const q = await query(
         collection(db, 'categories'),
         orderBy('createdAt'),
-        limit(10 * newValue)
+        limit(10)
       )
-
       const { docs } = await getDocs(q)
       const data = await docs.map(doc => ({
         ...doc.data(),
         id: doc.id
       }))
       await this.$store.commit('setTableValue', { key: 'allData', value: data })
-      // console.warn('newValue', newValue)
-      // await this.$store.commit(`${this.moduleName}/setTableValue`, {
-      //   key: 'page',
-      //   value: newValue
-      // })
-
-      // await this.$store.dispatch(`${this.moduleName}/getDataByQuery`, newValue)
+      console.warn('newValue', newValue)
+      await this.$store.commit(`${this.moduleName}/setTableValue`, {
+        key: 'page',
+        value: newValue
+      })
+      await this.$store.dispatch(`${this.moduleName}/getDataByQuery`, newValue)
     }
   },
   methods: {
