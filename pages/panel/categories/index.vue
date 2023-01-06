@@ -18,9 +18,9 @@ export default {
   name: 'Categories',
   layout: 'panel',
   async asyncData({ $axios, store }) {
-    const data = await $axios.$get('/categories')
-    store.dispatch('panel/categories/getAllDataFromApi', data)
-    return {}
+    // const data = await $axios.$get('/categories')
+    // store.dispatch('panel/categories/getAllDataFromApi', data)
+    // return {}
   },
   data() {
     return {

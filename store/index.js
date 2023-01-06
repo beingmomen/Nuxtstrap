@@ -40,28 +40,28 @@ export const actions = {
     )
 
     // get All Countries
-    const { data } = await this.$axios.$get('/categories')
-    commit(
-      'global/setList',
-      { key: 'categories', value: data.data },
-      { root: true }
-    )
+    // const { data } = await this.$axios.$get('/categories')
+    // commit(
+    //   'global/setList',
+    //   { key: 'categories', value: data.data },
+    //   { root: true }
+    // )
 
-    // get All Colors
-    const colors = await this.$axios.$get('/colors')
-    commit(
-      'global/setList',
-      { key: 'colors', value: colors.data.data },
-      { root: true }
-    )
+    // // get All Colors
+    // const colors = await this.$axios.$get('/colors')
+    // commit(
+    //   'global/setList',
+    //   { key: 'colors', value: colors.data.data },
+    //   { root: true }
+    // )
 
-    // get All Wood Colors
-    const woodColors = await this.$axios.$get('/woodColors')
-    commit(
-      'global/setList',
-      { key: 'woodColors', value: woodColors.data.data },
-      { root: true }
-    )
+    // // get All Wood Colors
+    // const woodColors = await this.$axios.$get('/woodColors')
+    // commit(
+    //   'global/setList',
+    //   { key: 'woodColors', value: woodColors.data.data },
+    //   { root: true }
+    // )
   },
   toggleLayoutCollapsed({ dispatch, commit, state }, payload) {
     payload > 1200

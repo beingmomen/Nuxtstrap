@@ -65,6 +65,31 @@ export default {
         draggable: false,
         position: 'top-center'
       }
+    ],
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyC8nfZnagAlsna5aVkylZ4C0AFQ6wNlJ2Y',
+          authDomain: 'nuxtstrap-999a5.firebaseapp.com',
+          databaseURL: 'https://nuxtstrap-999a5-default-rtdb.firebaseio.com',
+          projectId: 'nuxtstrap-999a5',
+          storageBucket: 'nuxtstrap-999a5.appspot.com',
+          messagingSenderId: '455970293575',
+          appId: '1:455970293575:web:3356a506ec2945797aee62'
+        },
+        services: {
+          auth: true,
+          firestore: true,
+          functions: true,
+          storage: true,
+          database: true,
+          messaging: true,
+          performance: true,
+          analytics: true,
+          remoteConfig: true
+        }
+      }
     ]
   ],
 
@@ -106,8 +131,8 @@ export default {
         },
         endpoints: {
           login: { url: '/users/login', method: 'post' },
-          user: { url: '/users/me', method: 'get' }
-          // user: false,
+          // user: { url: '/users/me', method: 'get' }
+          user: false
         }
       }
     },
