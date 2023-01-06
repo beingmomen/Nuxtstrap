@@ -19,8 +19,8 @@ import {
   getDocs,
   getFirestore,
   query,
-  limit,
-  orderBy
+  orderBy,
+  limit
 } from 'firebase/firestore'
 export default {
   name: 'Categories',

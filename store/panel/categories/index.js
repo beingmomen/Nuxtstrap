@@ -2,12 +2,12 @@ import {
   collection,
   // onSnapshot,
   addDoc,
-  // getDocs,
+  getDocs,
   getFirestore,
-  // query,
-  // limit,
+  query,
+  limit,
   // startAfter,
-  // orderBy,
+  orderBy,
   serverTimestamp
   // startAt,
   // offset
@@ -61,54 +61,26 @@ export const actions = {
     }
   },
 
-  async getDataByQuery({ state, commit }) {
-    // const db = await getFirestore()
-    // const q = query(
-    //   collection(db, 'categories'),
-    //   orderBy('createdAt'),
-    //   offset(22),
-    //   limit(10)
-    // )
-    // const { docs } = await getDocs(q)
-    // const data = await docs.map(doc => ({
-    //   ...doc.data(),
-    //   id: doc.id
-    // }))
-    // console.warn('data', data)
-    // const documentSnapshots = await getDocs(first)
-    // // Get the last visible document
-    // const lastVisible =
-    //   documentSnapshots.docs[documentSnapshots.docs.length - 1]
-    // console.log('last', lastVisible)
-    // // Construct a new query starting at this document,
-    // // get the next 25 cities.
-    // const next = query(
-    //   collection(db, 'cities'),
-    //   orderBy('population'),
-    //   limit(25)
-    // )
-    // const { size } = await getDocs(collection(db, 'categories'))
-    // const q = await query(
-    //   collection(db, 'categories'),
-    //   orderBy('createdAt'),
-    //   limit(10)
-    // )
-    // const startPoint = (state.table.page - 1) * 10
-    // const snapshot = await getDocs(q)
-    // const lastDoc = snapshot.docs[startPoint]
-    // const next = query(
-    //   collection(db, 'categories'),
-    //   orderBy('createdAt'),
-    //   startAfter(lastDoc),
-    //   limit(10)
-    // )
-    // const { docs } = await getDocs(next)
-    // const data = await docs.map(doc => ({
-    //   ...doc.data(),
-    //   id: doc.id
-    // }))
-    // await commit('setTableValue', { key: 'allData', value: data })
-    // await commit('setTableValue', { key: 'totalItems', value: size })
+  async getDataByQuery({ state, commit }, payload) {
+    await commit('setTableValue', {
+      key: 'page',
+      value: payload || 1
+    })
+    const db = await getFirestore()
+    // const page = await state.table.page
+
+    const q = await query(
+      collection(db, 'categories'),
+      orderBy('createdAt'),
+      limit(10 * payload)
+    )
+
+    const { docs } = await getDocs(q)
+    const data = await docs.map(doc => ({
+      ...doc.data(),
+      id: doc.id
+    }))
+    await commit('setTableValue', { key: 'allData', value: data })
   },
 
   deleteFromDB({ state }, payload) {

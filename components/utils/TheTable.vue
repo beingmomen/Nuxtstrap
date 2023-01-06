@@ -19,6 +19,7 @@
         hover
         responsive
         class="position-relative"
+        per-page="10"
         :foot-clone="false"
         :current-page="currentPage"
         :fields="headers"
@@ -81,7 +82,16 @@
       />
 
       <!-- pagination -->
-      <HelpersTableTPagination v-if="pagination" :module-name="moduleName" />
+      <HelpersTableTPagination v-if="pagination" :module-name="moduleName">
+        <template #content>
+          <b-pagination
+            v-model="currentPage"
+            per-page="10"
+            size="sm"
+            :total-rows="table.totalItems"
+          />
+        </template>
+      </HelpersTableTPagination>
     </div>
     <!-- Lottie Player -->
     <HelpersTLottie
@@ -95,6 +105,20 @@
 </template>
 
 <script>
+import {
+  collection,
+  // onSnapshot,
+  // addDoc,
+  getDocs,
+  getFirestore,
+  query,
+  limit,
+  // startAfter,
+  orderBy
+  // serverTimestamp
+  // startAt,
+  // offset
+} from 'firebase/firestore'
 export default {
   props: {
     moduleName: {
@@ -158,10 +182,28 @@ export default {
     }
   },
   watch: {
-    currentPage(newValue) {
-      this.$store.dispatch(`${this.moduleName}/getDataByQuery`, {
-        page: newValue
-      })
+    async currentPage(newValue) {
+      const db = await getFirestore()
+
+      const q = await query(
+        collection(db, 'categories'),
+        orderBy('createdAt'),
+        limit(10 * newValue)
+      )
+
+      const { docs } = await getDocs(q)
+      const data = await docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+      await this.$store.commit('setTableValue', { key: 'allData', value: data })
+      // console.warn('newValue', newValue)
+      // await this.$store.commit(`${this.moduleName}/setTableValue`, {
+      //   key: 'page',
+      //   value: newValue
+      // })
+
+      // await this.$store.dispatch(`${this.moduleName}/getDataByQuery`, newValue)
     }
   },
   methods: {
