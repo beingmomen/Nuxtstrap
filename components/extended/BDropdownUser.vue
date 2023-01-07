@@ -31,11 +31,10 @@
 
       <b-dropdown-divider />
 
-      <ExtendedBDropdownItem
-        icon="log-out"
-        :title="$t('navbar.logout')"
-        @click.native="logout"
-      />
+      <b-dropdown-item link-class="d-flex align-items-center" @click="logout">
+        <UtilsTheFIcon icon="log-out" />
+        <span class="fs-5 ml-1">{{ $t('logout') }}</span>
+      </b-dropdown-item>
     </b-nav-item-dropdown>
   </li>
 </template>
@@ -45,7 +44,6 @@ export default {
   methods: {
     logout() {
       this.$auth.logout()
-      this.$auth.strategy.token.reset()
     }
   }
 }
