@@ -9,7 +9,7 @@
         />
       </span>
       <h2 class="brand-text">
-        MaronX
+        {{ $config.SITE_TITLE }}
       </h2>
     </b-link>
   </li>

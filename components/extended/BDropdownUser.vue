@@ -9,9 +9,9 @@
       <template #button-content>
         <div class="d-sm-flex d-none user-nav align-items-start">
           <p class="user-name font-weight-bolder fs-5 mb-0">
-            MaronX
+            {{ $auth.user.name || $config.SITE_TITLE }}
           </p>
-          <span class="user-status">{{ $t('admin') }}</span>
+          <span class="user-status">{{ $auth.user.role || $t('admin') }}</span>
         </div>
         <b-avatar
           size="40"
@@ -31,11 +31,10 @@
 
       <b-dropdown-divider />
 
-      <ExtendedBDropdownItem
-        icon="log-out"
-        :title="$t('navbar.logout')"
-        @click.native="logout"
-      />
+      <b-dropdown-item link-class="d-flex align-items-center" @click="logout">
+        <UtilsTheFIcon icon="log-out" />
+        <span class="fs-5 ml-1">{{ $t('logout') }}</span>
+      </b-dropdown-item>
     </b-nav-item-dropdown>
   </li>
 </template>
@@ -45,7 +44,6 @@ export default {
   methods: {
     logout() {
       this.$auth.logout()
-      this.$auth.strategy.token.reset()
     }
   }
 }
