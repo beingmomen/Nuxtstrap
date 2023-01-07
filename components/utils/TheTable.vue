@@ -167,10 +167,12 @@ export default {
     }
   },
   watch: {
-    currentPage(newValue) {
-      this.$store.dispatch(`${this.moduleName}/getDataByQuery`, {
-        page: newValue
+    async currentPage(newValue) {
+      await this.$store.commit(`${this.moduleName}/setTableValue`, {
+        key: 'page',
+        value: newValue
       })
+      await this.$store.dispatch(`${this.moduleName}/getDataByQuery`)
     }
   },
   methods: {
