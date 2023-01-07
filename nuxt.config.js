@@ -119,6 +119,8 @@ export default {
   },
 
   auth: {
+    plugins: ['~/plugins/currentUser.js'],
+
     localStorage: false,
     strategies: {
       local: {

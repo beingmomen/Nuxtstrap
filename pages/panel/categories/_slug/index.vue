@@ -43,11 +43,12 @@ export default {
     next()
   },
   layout: 'panel',
-  async asyncData({ $axios, store, params }) {
+  async asyncData({ $fire, store, params }) {
     await store.dispatch('panel/categories/resetData')
-    const id = params.slug.split('-').at(-1)
-    const { data } = await $axios.$get(`/categories/${id}`)
-    await store.dispatch('panel/categories/showSingleData', data.data)
+    const id = await params.slug
+    const doc = await $fire.firestore.collection('categories').doc(id).get()
+
+    await store.dispatch('panel/categories/showSingleData', doc.data())
     return {
       id
     }

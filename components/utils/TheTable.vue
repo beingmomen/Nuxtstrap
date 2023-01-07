@@ -19,6 +19,7 @@
         hover
         responsive
         class="position-relative"
+        per-page="10"
         :foot-clone="false"
         :current-page="currentPage"
         :fields="headers"
@@ -46,15 +47,12 @@
         <template #cell(actions)="data">
           {{ data.value }}
           <span class="d-flex">
-            <nuxt-link
-              v-if="show"
-              :to="localePath(`${path}/${data.item.slug}-${data.item._id}`)"
-            >
+            <nuxt-link v-if="show" :to="localePath(`${path}/${data.item.id}`)">
               <UtilsTheFIcon icon="eye" />
             </nuxt-link>
             <nuxt-link
               v-if="update"
-              :to="localePath(`${path}/${data.item.slug}-${data.item._id}`)"
+              :to="localePath(`${path}/${data.item.id}`)"
             >
               <UtilsTheFIcon icon="edit" />
             </nuxt-link>
@@ -81,7 +79,16 @@
       />
 
       <!-- pagination -->
-      <HelpersTableTPagination v-if="pagination" :module-name="moduleName" />
+      <HelpersTableTPagination v-if="pagination">
+        <template #content>
+          <b-pagination
+            v-model="currentPage"
+            per-page="10"
+            size="sm"
+            :total-rows="table.totalItems"
+          />
+        </template>
+      </HelpersTableTPagination>
     </div>
     <!-- Lottie Player -->
     <HelpersTLottie
@@ -158,10 +165,14 @@ export default {
     }
   },
   watch: {
-    currentPage(newValue) {
-      this.$store.dispatch(`${this.moduleName}/getDataByQuery`, {
-        page: newValue
+    async currentPage(newValue) {
+      await this.$store.commit(`${this.moduleName}/setTableValue`, {
+        key: 'page',
+        value: newValue
       })
+      // await this.$store.dispatch(`${this.moduleName}/getDataByQuery`, {
+      //   page: newValue
+      // })
     }
   },
   methods: {
@@ -180,13 +191,12 @@ export default {
             centered: false
           }
         )
-        .then((value, i) => value && this.delete(data.item.id))
+        .then((value, i) => value && this.delete(data.item.id, data.item.image))
     },
-    delete(id) {
-      this.$store.dispatch(`${this.moduleName}/deleteFromDB`, id).then(() => {
-        this.$nuxt.refresh()
-        this.$toast.success(this.$t('msg.delete'))
-      })
+    async delete(id, img) {
+      await this.$store.dispatch(`${this.moduleName}/deleteFromDB`, { id, img })
+      await this.$nuxt.refresh()
+      await this.$toast.success(this.$t('msg.delete'))
     }
   }
 }

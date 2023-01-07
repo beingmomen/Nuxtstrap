@@ -105,9 +105,7 @@ export default {
     },
     previewImg() {
       const fields = this.$store.getters[`${this.moduleName}/fields`]
-      return `${this.$config.NODE_URL_images}${this.preview}/${
-        fields[this.storeKey]
-      }`
+      return fields[this.storeKey]
     }
   },
   methods: {
