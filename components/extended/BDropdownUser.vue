@@ -9,7 +9,7 @@
       <template #button-content>
         <div class="d-sm-flex d-none user-nav align-items-start">
           <p class="user-name font-weight-bolder fs-5 mb-0">
-            MaronX
+            {{ $config.SITE_TITLE }}
           </p>
           <span class="user-status">{{ $t('admin') }}</span>
         </div>
