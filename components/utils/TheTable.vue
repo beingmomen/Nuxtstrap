@@ -81,7 +81,16 @@
       />
 
       <!-- pagination -->
-      <HelpersTableTPagination v-if="pagination" :module-name="moduleName" />
+      <HelpersTableTPagination v-if="pagination">
+        <template #content>
+          <b-pagination
+            v-model="currentPage"
+            per-page="10"
+            size="sm"
+            :total-rows="table.totalItems"
+          />
+        </template>
+      </HelpersTableTPagination>
     </div>
     <!-- Lottie Player -->
     <HelpersTLottie
