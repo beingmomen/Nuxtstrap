@@ -1,7 +1,11 @@
 export const state = () => ({
   fields: {
-    email: 'abdelmomenelshatory@gmail.com',
-    password: 'password'
+    username: 'abdelmomenelshatory@gmail.com',
+    password: 'password',
+    grant_type: 'password',
+    client_id: 'client',
+    client_secret: '!QA2ws3ed',
+    AllowedScopes: 'application'
   }
 })
 

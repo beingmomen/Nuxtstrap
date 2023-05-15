@@ -10,9 +10,9 @@
   >
     <template #inputs>
       <FormFInputIcon
-        :label="$t('email')"
-        store-key="email"
-        type="email"
+        :label="$t('username')"
+        store-key="username"
+        type="text"
         icon="mail"
         :module-name="moduleName"
         lg="12"

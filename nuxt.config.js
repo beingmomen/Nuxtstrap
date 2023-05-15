@@ -105,9 +105,12 @@ export default {
           property: 'data.data'
         },
         endpoints: {
-          login: { url: '/users/login', method: 'post' },
-          user: { url: '/users/me', method: 'get' }
-          // user: false,
+          login: {
+            url: 'https://identity-bjag3.ondigitalocean.app/connect/token',
+            method: 'post'
+          },
+          user: { url: '/profile', method: 'get' }
+          // user: false
         }
       }
     },
@@ -123,7 +126,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'https://lakohouseapi-3r7n.onrender.com/api/v1',
-    baseURL: 'http://127.0.0.1:5678/api/v1'
+    baseURL: 'https://stingray-app-dyyv9.ondigitalocean.app/api'
   },
 
   generate: {
@@ -133,7 +136,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   publicRuntimeConfig: {
-    SITE_TITLE: 'Nuxtstrap',
-    NODE_URL_images: 'http://127.0.0.1:5678/images/'
+    SITE_TITLE: 'Nuxtstrap'
   }
 }
