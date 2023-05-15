@@ -7,6 +7,8 @@
   "bracketSameLine": false,
   "bracketSpacing": true,
   "vueIndentScriptAndStyle": true,
-  "singleAttributePerLine": true
+  "singleAttributePerLine": true,
+  "tabWidth": 2,
+  "useTabs": false
 
 }

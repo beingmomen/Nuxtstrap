@@ -19,7 +19,6 @@
         hover
         responsive
         class="position-relative"
-        per-page="10"
         :foot-clone="false"
         :current-page="currentPage"
         :fields="headers"
@@ -105,21 +104,20 @@
 </template>
 
 <script>
-import {
-  collection,
-  // onSnapshot,
-  // addDoc,
-  getDocs,
-  getFirestore,
-  query,
-  limit,
-  // startAfter,
-  orderBy
-  // skip
-  // serverTimestamp
-  // startAt,
-  // offset
-} from 'firebase/firestore'
+// import // collection,
+// onSnapshot,
+// addDoc,
+// getDocs,
+// getFirestore,
+// query,
+// limit,
+// startAfter,
+// orderBy
+// skip
+// serverTimestamp
+// startAt,
+// offset
+// 'firebase/firestore'
 export default {
   props: {
     moduleName: {
@@ -173,7 +171,9 @@ export default {
   },
   data() {
     return {
-      currentPage: 1
+      currentPage: 1,
+      lastVisible: '',
+      firstVisible: ''
     }
   },
 
@@ -182,26 +182,14 @@ export default {
       return this.$store.getters[`${this.moduleName}/table`]
     }
   },
+
   watch: {
-    async currentPage(newValue) {
-      const db = await getFirestore()
-      const q = await query(
-        collection(db, 'categories'),
-        orderBy('createdAt'),
-        limit(10)
-      )
-      const { docs } = await getDocs(q)
-      const data = await docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-      }))
-      await this.$store.commit('setTableValue', { key: 'allData', value: data })
-      console.warn('newValue', newValue)
+    async currentPage(to) {
       await this.$store.commit(`${this.moduleName}/setTableValue`, {
         key: 'page',
-        value: newValue
+        value: to
       })
-      await this.$store.dispatch(`${this.moduleName}/getDataByQuery`, newValue)
+      await this.$store.dispatch(`${this.moduleName}/getDataByQuery`)
     }
   },
   methods: {

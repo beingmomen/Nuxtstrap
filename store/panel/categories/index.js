@@ -6,7 +6,7 @@ import {
   getFirestore,
   query,
   limit,
-  // startAfter,
+  startAfter,
   orderBy,
   serverTimestamp
   // startAt,
@@ -27,18 +27,29 @@ export const state = () => ({
     arabicName: null,
     englishName: null,
     image: null
-  }
+  },
+  visible: null
 })
 
 export const getters = {
   table: state => state.table,
-  fields: state => state.fields
+  fields: state => state.fields,
+  values: state => state.values
 }
 
 export const actions = {
   async getAllDataFromApi({ commit }, { data, total }) {
     await commit('setTableValue', { key: 'allData', value: data })
     await commit('setTableValue', { key: 'totalItems', value: total })
+
+    // await commit('setValues', {
+    //   key: 'lastVisible',
+    //   value: lastVisible
+    // })
+    // await commit('setValues', {
+    //   key: 'firstVisible',
+    //   value: firstVisible
+    // })
   },
 
   async addDataToDB({ state }) {
@@ -67,15 +78,29 @@ export const actions = {
       value: payload || 1
     })
     const db = await getFirestore()
-    // const page = await state.table.page
 
     const q = await query(
       collection(db, 'categories'),
       orderBy('createdAt'),
-      limit(10 * payload)
+      limit(10),
+      startAfter(JSON.parse(state.values.lastVisible))
     )
 
     const { docs } = await getDocs(q)
+
+    console.warn('docs', docs)
+    const lastVisible = JSON.stringify((await docs[docs.length - 1]) || null)
+    const firstVisible = JSON.stringify((await docs[0]) || null)
+
+    await commit('setValues', {
+      key: 'lastVisible',
+      value: lastVisible
+    })
+    await commit('setValues', {
+      key: 'firstVisible',
+      value: firstVisible
+    })
+
     const data = await docs.map(doc => ({
       ...doc.data(),
       id: doc.id
@@ -100,5 +125,8 @@ export const mutations = {
   },
   setFieldValue(state, { key, value }) {
     state.fields[key] = value
+  },
+  setValues(state, { key, value }) {
+    state[key] = value
   }
 }

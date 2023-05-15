@@ -16,6 +16,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     'space-before-function-paren': 0
+    // indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 2 }]
+
     // 'arrow-parens': ['error', 'avoid']
   }
 }
