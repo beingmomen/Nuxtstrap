@@ -2,7 +2,7 @@
   <ContainersDoAuth
     path="/panel"
     :img="img"
-    :welcome="`${$t('login.welcome')} ${$config.SITE_TITLE}! 👋`"
+    :welcome="`${$t('login.welcome')} ${appTitle}! 👋`"
     :msg="$t('login.please')"
     :btn="$t('buttons.login')"
     :module-name="moduleName"
@@ -10,9 +10,9 @@
   >
     <template #inputs>
       <FormFInputIcon
-        :label="$t('username')"
-        store-key="username"
-        type="text"
+        :label="$t('email')"
+        store-key="email"
+        type="email"
         icon="mail"
         :module-name="moduleName"
         lg="12"
@@ -45,6 +45,11 @@ export default {
     return {
       moduleName: 'authentication/login',
       img: 'login-v2.svg'
+    }
+  },
+  computed: {
+    appTitle() {
+      return process.env.APP_TITLE
     }
   }
 }

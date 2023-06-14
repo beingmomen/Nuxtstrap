@@ -1,9 +1,14 @@
 <template>
-  <b-col lg="3" md="5" sm="6" class="p-0 mb-2 mr-lg-auto">
+  <b-col
+    lg="3"
+    md="5"
+    sm="6"
+    class="p-0 mb-2 mr-lg-auto"
+  >
     <b-form-group class="h-100 mb-0">
       <b-input-group>
         <v-select
-          v-model="getContent"
+          v-model="fieldValue"
           class="w-100 table-filter"
           :reduce="item => (notId ? item : item.id)"
           :label="labelSelect"
@@ -33,6 +38,10 @@ export default {
     },
     storeKey: {
       type: String,
+      default: 'filter'
+    },
+    filterList: {
+      type: String,
       default: null
     },
     moduleName: {
@@ -57,7 +66,7 @@ export default {
     },
     change: {
       type: Boolean,
-      default: false
+      default: true
     },
     clearable: {
       type: Boolean,
@@ -80,19 +89,21 @@ export default {
     return {}
   },
   computed: {
-    getContent: {
+    fieldValue: {
       get: function () {
-        return this.$store.getters[`${this.moduleName}/${this.storeKey}`]
+        const fields = this.$store.getters[`${this.moduleName}/table`]
+        return fields[this.storeKey]
       },
       set(val) {
-        this.$store.commit(`${this.moduleName}/${this.storeKey}`, {
+        this.$store.commit(`${this.moduleName}/setTableValue`, {
           key: this.storeKey,
           value: val
         })
       }
     },
     list() {
-      return this.$store.getters[`${this.moduleName}/filters`]
+      const data = this.$store.getters['global/lists']
+      return data[this.filterList]
     }
   },
   methods: {

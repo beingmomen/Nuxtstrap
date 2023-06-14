@@ -1,12 +1,7 @@
 <template>
   <UtilsTheContentWrapper :list="list">
     <template #content>
-      <ContainersDoUpdate
-        :id="id"
-        :title="$t('admin')"
-        :module-name="moduleName"
-        :path="moduleName"
-      >
+      <ContainersDoCreate :title="$t('admin')" :module-name="moduleName">
         <template #inputs>
           <FormFInputIcon
             :label="$t('name')"
@@ -23,7 +18,7 @@
             :module-name="moduleName"
           />
 
-          <!-- <FormFPasswordIcon
+          <FormFPasswordIcon
             :label="$t('password')"
             store-key="password"
             :module-name="moduleName"
@@ -33,7 +28,7 @@
             :label="$t('confirm_password')"
             store-key="passwordConfirm"
             :module-name="moduleName"
-          /> -->
+          />
 
           <FormFPhoneIcon
             :label="$t('phone')"
@@ -43,24 +38,15 @@
             :module-name="moduleName"
           />
         </template>
-      </ContainersDoUpdate>
+      </ContainersDoCreate>
     </template>
   </UtilsTheContentWrapper>
 </template>
 
 <script>
 export default {
-  name: 'Update',
+  name: 'Create',
   layout: 'panel',
-  async asyncData({ $axios, store, params }) {
-    await store.dispatch('panel/admins/resetData')
-    const id = params.slug.split('-').at(-1)
-    const { data } = await $axios.$get(`/users/${id}`)
-    await store.dispatch('panel/admins/showSingleData', data.data)
-    return {
-      id
-    }
-  },
   data() {
     return {
       moduleName: 'panel/admins',
@@ -71,9 +57,9 @@ export default {
           to: '/panel/admins'
         },
         {
-          text: this.$t('update'),
+          text: this.$t('create'),
           active: true,
-          to: '/panel/admins/update'
+          to: '/panel/admins/create'
         }
       ]
     }

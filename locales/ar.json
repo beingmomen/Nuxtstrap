@@ -33,6 +33,19 @@
   "images" : "الصور",
   "actions": "الإجراءات",
   "more_page": "المزيد",
+  "username": "اسم المستخدم",
+  "users": "المستخدمين",
+  "allUsers": "المستخدمين",
+  "students": "الطلاب",
+  "state": "الحالة",
+  "active": "مفعل",
+  "notActive": "غير مفعل",
+  "logout": "تسجيل الخروج",
+  "upload": "اختر صورة",
+  "country": "الدولة",
+  "save_changes": "حفظ الغييرات",
+  "old_password": "كلمة المرور القديمة",
+
 
 
 

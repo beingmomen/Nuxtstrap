@@ -1,21 +1,21 @@
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"), url("/assets/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Sevillana";
-  src: local("Sevillana"), url("/assets/fonts/Sevillana/Sevillana-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Cookie";
-  src: local("Cookie"), url("/assets/fonts/Cookie/Cookie-Regular.ttf") format("truetype");
-}
+// @font-face {
+//   font-family: "Montserrat";
+//   src: local("Montserrat"), url("/assets/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: "Sevillana";
+//   src: local("Sevillana"), url("/assets/fonts/Sevillana/Sevillana-Regular.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: "Cookie";
+//   src: local("Cookie"), url("/assets/fonts/Cookie/Cookie-Regular.ttf") format("truetype");
+// }
 
 html {
   body {
     font-family: "Montserrat";
     .brand-text {
-      font-family: "Cookie", cursive !important;
+      // font-family: "Cookie", cursive !important;
     }
   }
 }

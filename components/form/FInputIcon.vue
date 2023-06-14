@@ -1,5 +1,9 @@
 <template>
-  <b-col :lg="lg" :md="md" :sm="sm">
+  <b-col
+    :lg="lg"
+    :md="md"
+    :sm="sm"
+  >
     <b-form-group :label="label">
       <b-input-group>
         <b-input-group-prepend is-text>

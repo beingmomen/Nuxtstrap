@@ -33,6 +33,19 @@
   "images" : "Images",
   "actions": "Actions",
   "more_page": "More Page",
+  "username": "Username",
+  "logout": "Logout",
+  "users": "Users",
+  "allUsers": "Users",
+  "students": "Students",
+  "state": "State",
+  "active": "Active",
+  "notActive": "Not active",
+  "old_password": "Old Password",
+  "country": "Country",
+  "save_changes": "Save Changes",
+  "upload": "Pick Image",
+
 
 
   "login": {

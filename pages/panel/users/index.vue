@@ -2,11 +2,15 @@
   <UtilsTheContentWrapper :list="list">
     <template #content>
       <UtilsTheTable
-        :title="$t('sidebar.admins')"
-        :filter="false"
+        :title="$t('users')"
+        :filter="true"
+        filter-list="activeList"
+        filter-key="filters"
         :headers="headers"
-        module-name="panel/admins"
-        path="/panel/admins"
+        :create="false"
+        :show="false"
+        module-name="panel/users"
+        path="/panel/users"
         lottie="https://assets9.lottiefiles.com/packages/lf20_q0vtqaxf.json"
       />
     </template>
@@ -15,21 +19,21 @@
 
 <script>
 export default {
-  name: 'Admins',
+  name: 'Users',
   layout: 'panel',
   async asyncData({ $axios, store }) {
     const data = await $axios.$get('/users', {
-      params: { role: 'admin' }
+      params: { role: 'user' }
     })
-    store.dispatch('panel/admins/getAllDataFromApi', data)
+    store.dispatch('panel/users/getAllDataFromApi', data)
   },
   data() {
     return {
       list: [
         {
-          text: this.$t('admins'),
+          text: this.$t('users'),
           active: true,
-          to: '/panel/admins'
+          to: '/panel/users'
         }
       ],
       headers: [
@@ -44,6 +48,14 @@ export default {
         {
           key: 'phone',
           label: this.$t('phone')
+        },
+        {
+          key: 'active',
+          label: this.$t('state')
+          // formatter: (value, key, item) => {
+          //   const str = value ? this.$t('active') : this.$t('notActive')
+          //   return str
+          // }
         },
         {
           key: 'actions',

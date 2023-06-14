@@ -1,15 +1,18 @@
 <template>
   <li class="nav-item mr-auto w-100">
-    <b-link class="navbar-brand w-100" to="/">
+    <b-link
+      class="navbar-brand w-100"
+      to="/"
+    >
       <span class="brand-logo">
         <b-img
           :style="{ 'max-width': maxWidth + 'px' }"
-          :src="require('@/assets/images/logos/tech.png')"
+          :src="logo"
           alt="logo"
         />
       </span>
       <h2 class="brand-text">
-        {{ $config.SITE_TITLE }}
+        {{ appTitle }}
       </h2>
     </b-link>
   </li>
@@ -21,6 +24,14 @@ export default {
     maxWidth: {
       type: [Number, String],
       default: 36
+    }
+  },
+  computed: {
+    appTitle() {
+      return process.env.APP_TITLE
+    },
+    logo() {
+      return `/${process.env.LOGO}`
     }
   }
 }

@@ -2,8 +2,10 @@ export const state = () => ({
   lists: {
     countries: [],
     categories: [],
-    colors: [],
-    woodColors: []
+    activeList: [
+      { id: 0, name: 'Not Active' },
+      { id: 1, name: 'Active' }
+    ]
   }
 })
 

@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Nuxtstrap',
+    title: process.env.BROWSER_TITLE,
     htmlAttrs: {
       lang: 'en',
       dir: 'ltr'
@@ -15,7 +15,34 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: `/${process.env.LOGO}` },
+      {
+        rel: 'stylesheet',
+        type: 'image/x-icon',
+        href: `/${process.env.LOGO}`
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com'
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Cookie&display=swap'
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -30,7 +57,9 @@ export default {
     '~/plugins/settings/layout.js',
     { src: '~/plugins/settings/lottie-player.js', mode: 'client' },
     '~/plugins/settings/vee-validate.js',
-    '~/plugins/catchError.js'
+    '~/plugins/catchError.js',
+    '~/plugins/fetch.js',
+    '~/plugins/axios.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,8 +70,19 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtclub/feathericons',
-    '@braid/vue-formulate/nuxt'
+    '@braid/vue-formulate/nuxt',
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/moment'
   ],
+
+  fontawesome: {
+    component: 'Fa',
+    suffix: false,
+    icons: {
+      solid: true,
+      brands: true
+    }
+  },
 
   formulate: {
     configPath: '~/formulate.config.js'
@@ -98,7 +138,6 @@ export default {
     strategies: {
       local: {
         token: {
-          prefix: '_token_maron_x_panel.',
           property: 'token'
         },
         user: {
@@ -106,10 +145,10 @@ export default {
         },
         endpoints: {
           login: {
-            url: 'https://identity-bjag3.ondigitalocean.app/connect/token',
+            url: '/users/login',
             method: 'post'
           },
-          user: { url: '/profile', method: 'get' }
+          user: { url: '/users/me', method: 'get' }
           // user: false
         }
       }
@@ -124,9 +163,18 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'https://lakohouseapi-3r7n.onrender.com/api/v1',
-    baseURL: 'https://stingray-app-dyyv9.ondigitalocean.app/api'
+    baseURL: process.env.BASE_URL
+  },
+  env: {
+    BASE_URL: process.env.BASE_URL,
+    APP_TITLE: process.env.APP_TITLE,
+    BROWSER_TITLE: process.env.BROWSER_TITLE,
+    LOGO: process.env.LOGO,
+    IMG_PATH: process.env.IMG_PATH
+  },
+
+  server: {
+    port: process.env.PORT
   },
 
   generate: {
@@ -134,8 +182,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
-  publicRuntimeConfig: {
-    SITE_TITLE: 'Nuxtstrap'
-  }
+  build: {}
 }

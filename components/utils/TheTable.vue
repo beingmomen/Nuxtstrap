@@ -1,16 +1,31 @@
 <template>
   <b-card no-body>
     <div v-if="table.totalItems">
-      <b-card class="mb-0" :title="title">
+      <b-card
+        class="mb-0"
+        :title="title"
+      >
         <div class="d-flex flex-wrap justify-content-between">
           <!-- Filter  -->
-          <HelpersTableTFilter v-if="filter" :module-name="moduleName" />
+          <HelpersTableTFilter
+            v-if="filter"
+            :module-name="moduleName"
+            :filter-list="filterList"
+            :store-key="filterKey"
+          />
 
           <!-- Search -->
-          <HelpersTableTSearch v-if="search" :module-name="moduleName" />
+          <HelpersTableTSearch
+            v-if="search"
+            :module-name="moduleName"
+          />
 
           <!-- Create Button -->
-          <HelpersTableTButton v-if="create" :title="title" :path="path" />
+          <HelpersTableTButton
+            v-if="create"
+            :title="title"
+            :path="path"
+          />
         </div>
       </b-card>
 
@@ -25,22 +40,29 @@
         :items="table.allData"
       >
         <template #cell(avatar)="data">
-          <b-avatar class="pull-up" :src="data.value" />
-        </template>
-        <template #cell(arabicName)="data">
-          <b-link to="">
-            {{ data.value }}
-          </b-link>
-        </template>
-        <template #cell(englishName)="data">
-          <b-link to="">
-            {{ data.value }}
-          </b-link>
+          <b-avatar
+            class="pull-up"
+            :src="data.value"
+          />
         </template>
         <template #cell(category)="data">
           <b-link to="">
             {{ data.value }}
           </b-link>
+        </template>
+        <template #cell(active)="data">
+          <b-form-checkbox
+            v-if="data.value"
+            v-model="data.value"
+            name="checkbox-1"
+            @change="changeState(data, false)"
+          />
+          <b-form-checkbox
+            v-else
+            v-model="data.value"
+            name="checkbox-1"
+            @change="changeState(data, true)"
+          />
         </template>
 
         <template #cell(actions)="data">
@@ -122,6 +144,14 @@ export default {
       type: Array,
       default: null
     },
+    filterList: {
+      type: String,
+      default: null
+    },
+    filterKey: {
+      type: String,
+      default: null
+    },
     lottie: {
       type: String,
       default: null
@@ -157,7 +187,8 @@ export default {
   },
   data() {
     return {
-      currentPage: 1
+      currentPage: 1,
+      loading: false
     }
   },
 
@@ -192,6 +223,17 @@ export default {
           }
         )
         .then((value, i) => value && this.delete(data.item.id))
+    },
+    async changeState(data, active) {
+      await this.$store.dispatch(`${this.moduleName}/changeState`, {
+        id: data.item._id,
+        active
+      })
+      if (active) {
+        await this.$toast.success('تم التفعيل')
+      } else {
+        await this.$toast.success('تم إلغاء التفعيل')
+      }
     },
     delete(id) {
       this.$store.dispatch(`${this.moduleName}/deleteFromDB`, id).then(() => {

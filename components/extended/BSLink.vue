@@ -4,8 +4,15 @@
       :to="localePath(`${route}`)"
       class="d-flex align-items-center nav-item-link-style"
     >
-      <UtilsTheFIcon :icon="icon" height="22.33" />
-      <span class="menu-title text-truncate fs-5" v-text="title" />
+      <UtilsTheFIcon
+        :icon-type="iconType"
+        :icon="icon"
+        height="22.33"
+      />
+      <span
+        class="menu-title text-truncate fs-5"
+        v-text="title"
+      />
     </nuxt-link>
   </li>
 </template>
@@ -16,6 +23,10 @@ export default {
     route: {
       type: String,
       default: null
+    },
+    iconType: {
+      type: String,
+      default: 'feather'
     },
     icon: {
       type: String,

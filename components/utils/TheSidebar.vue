@@ -18,22 +18,27 @@
       class="ps-container main-menu-content scroll-area ps ps--active-y mt-2"
     >
       <ul class="navigation navigation-main">
-        <ExtendedBSLink :title="$t(`dashboard`)" icon="home" route="panel" />
+        <ExtendedBSLink
+          :title="$t(`dashboard`)"
+          icon="home"
+          route="panel"
+        />
         <!-- <ExtendedBSDivider :title="$t(`more_page`)" /> -->
         <ExtendedBSLink
           :title="$t(`admins`)"
-          icon="user"
+          icon="users"
+          icon-type="awesome"
           route="/panel/admins"
         />
         <ExtendedBSLink
-          :title="$t(`categories`)"
-          icon="user"
-          route="/panel/categories"
+          :title="$t(`users`)"
+          icon="users"
+          route="/panel/users"
         />
         <ExtendedBSLink
-          :title="$t(`products`)"
-          icon="user"
-          route="/panel/products"
+          :title="$t(`categories`)"
+          icon="grid"
+          route="/panel/categories"
         />
       </ul>
     </div>

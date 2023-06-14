@@ -3,7 +3,7 @@ export const state = () => ({
   table: {
     totalItems: 0,
     allData: [],
-    filters: [],
+    filters: null,
     search: null,
     page: null
   },
@@ -48,13 +48,26 @@ export const actions = {
     const params = {
       page: state.table.page || 1,
       search: state.table.search,
-      role: 'admin'
+      active: state.table.filters,
+      role: 'user'
     }
     const data = await this.$axios.$get(state.apiModule, {
       params
     })
 
     dispatch('getAllDataFromApi', data)
+  },
+
+  filtersChange({ state, dispatch }, payload) {
+    dispatch('getDataByQuery')
+  },
+  async changeState({ state, dispatch }, { id, active }) {
+    await this.$axios.$patch(`${state.apiModule}/${id}`, {
+      active
+    })
+    await dispatch('getDataByQuery')
+    // eslint-disable-next-line no-useless-return
+    return
   },
 
   deleteFromDB({ state }, payload) {
