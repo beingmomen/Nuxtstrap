@@ -1,5 +1,10 @@
 <template>
-  <b-col :lg="lg" :md="md" :sm="sm" class="mt-2">
+  <b-col
+    :lg="lg"
+    :md="md"
+    :sm="sm"
+    class="mt-2"
+  >
     <b-form-group :label="label">
       <b-input-group class="position-relative">
         <b-input-group-prepend is-text>
@@ -105,9 +110,7 @@ export default {
     },
     previewImg() {
       const fields = this.$store.getters[`${this.moduleName}/fields`]
-      return `${this.$config.NODE_URL_images}${this.preview}/${
-        fields[this.storeKey]
-      }`
+      return `${process.env.IMG_PATH}/${this.preview}/${fields[this.storeKey]}`
     }
   },
   methods: {

@@ -1,5 +1,10 @@
 <template>
-  <b-col :lg="lg" :md="md" :sm="sm" class="mt-2">
+  <b-col
+    :lg="lg"
+    :md="md"
+    :sm="sm"
+    class="mt-2"
+  >
     <b-form-group :label="label">
       <b-input-group class="position-relative">
         <b-input-group-prepend is-text>
@@ -42,7 +47,11 @@
             :src="file"
           />
         </b-avatar-group>
-        <b-avatar-group v-else size="32px" class="preview-img">
+        <b-avatar-group
+          v-else
+          size="32px"
+          class="preview-img"
+        >
           <b-avatar
             v-for="file in 3"
             :key="file"
@@ -132,7 +141,7 @@ export default {
       const arr = fields[this.storeKey] || []
       return arr
         .filter(Boolean)
-        .map(img => `${this.$config.NODE_URL_images}${this.preview}/${img}`)
+        .map(img => `${process.env.IMG_PATH}/${this.preview}/${img}`)
     }
   },
   methods: {
