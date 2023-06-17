@@ -1,7 +1,10 @@
 <template>
-  <UtilsTheContentWrapper>
+  <UtilsTheContentWrapper :list="list">
     <template #content>
-      <ContainersDoCreate :title="$t('category')" :module-name="moduleName">
+      <ContainersDoCreate
+        :title="$t('category')"
+        :module-name="moduleName"
+      >
         <template #inputs>
           <FormFInputIcon
             :label="$t('ar_name')"

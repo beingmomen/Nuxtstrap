@@ -1,5 +1,5 @@
 <template>
-  <UtilsTheContentWrapper>
+  <UtilsTheContentWrapper :list="list">
     <template #content>
       <UtilsTheTable
         :title="$t('category')"
