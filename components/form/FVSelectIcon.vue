@@ -1,9 +1,16 @@
 <template>
-  <b-col :lg="lg" :md="md" :sm="sm">
+  <b-col
+    :lg="lg"
+    :md="md"
+    :sm="sm"
+  >
     <b-form-group :label="label">
       <b-input-group class="d-flex flex-nowrap">
         <b-input-group-prepend is-text>
-          <UtilsTheFIcon :icon="icon" />
+          <UtilsTheFIcon
+            :icon="icon"
+            :icon-type="iconType"
+          />
         </b-input-group-prepend>
         <v-select
           v-model="fieldValue"
@@ -18,7 +25,10 @@
           :placeholder="label"
           @input="changeData($event)"
         >
-          <template v-if="imgAvatar || colorAvatar" #option="{ color, image }">
+          <template
+            v-if="imgAvatar || colorAvatar"
+            #option="{ color, image }"
+          >
             <span v-if="color">
               <b-avatar
                 size="20"
@@ -51,6 +61,10 @@ export default {
     labelSelect: {
       type: String,
       default: 'name'
+    },
+    iconType: {
+      type: String,
+      default: 'feather'
     },
     storeKey: {
       type: String,

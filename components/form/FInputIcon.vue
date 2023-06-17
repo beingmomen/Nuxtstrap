@@ -7,7 +7,10 @@
     <b-form-group :label="label">
       <b-input-group>
         <b-input-group-prepend is-text>
-          <UtilsTheFIcon :icon="icon" />
+          <UtilsTheFIcon
+            :icon="icon"
+            :icon-type="iconType"
+          />
         </b-input-group-prepend>
         <b-form-input
           v-model="fieldValue"
@@ -30,6 +33,10 @@ export default {
     moduleName: {
       type: String,
       default: null
+    },
+    iconType: {
+      type: String,
+      default: 'feather'
     },
     icon: {
       type: String,
