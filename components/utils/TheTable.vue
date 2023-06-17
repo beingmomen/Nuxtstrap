@@ -45,6 +45,19 @@
             :src="data.value"
           />
         </template>
+        <template #cell(link)="data">
+          <b-link
+            :to="
+              localePath(
+                `/panel/${data.field.route}/${data.item[data.field.obj].slug}-${
+                  data.item[data.field.obj]._id
+                }`
+              )
+            "
+          >
+            {{ data.value }}
+          </b-link>
+        </template>
         <template #cell(category)="data">
           <b-link to="">
             {{ data.value }}
