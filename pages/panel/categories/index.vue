@@ -36,7 +36,7 @@ export default {
           key: 'avatar',
           label: this.$t('image'),
           formatter: (value, key, item) => {
-            const url = `${this.$config.NODE_URL_images}/categories/${item.image}`
+            const url = `${process.env.IMG_PATH}/categories/${item.image}`
             return url
           }
         },
