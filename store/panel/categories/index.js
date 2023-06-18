@@ -39,8 +39,13 @@ export const actions = {
     return this.$axios.$patch(`${state.apiModule}/${payload}`, data)
   },
 
-  showSingleData({ commit }, payload) {
-    for (const [key, value] of Object.entries(payload)) {
+  showSingleData({ state, commit }, payload) {
+    // Main Function
+    const extract = Object.keys(state.fields)
+    const extractedData = extract.map(key => ({ [key]: payload[key] }))
+    const result = Object.assign({}, ...extractedData)
+
+    for (const [key, value] of Object.entries(result)) {
       commit('setFieldValue', { key, value })
     }
   },

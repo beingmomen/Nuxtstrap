@@ -11,6 +11,7 @@
             v-if="filter"
             :module-name="moduleName"
             :filter-list="filterList"
+            :label-select="labelSelect"
             :store-key="filterKey"
           />
 
@@ -161,9 +162,13 @@ export default {
       type: String,
       default: null
     },
+    labelSelect: {
+      type: String,
+      default: 'name'
+    },
     filterKey: {
       type: String,
-      default: null
+      default: 'filters'
     },
     lottie: {
       type: String,
