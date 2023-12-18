@@ -34,11 +34,7 @@ export default {
       headers: [
         {
           key: 'avatar',
-          label: this.$t('image'),
-          formatter: (value, key, item) => {
-            const url = `${process.env.IMG_PATH}/categories/${item.image}`
-            return url
-          }
+          label: this.$t('image')
         },
         {
           key: 'arabicName',

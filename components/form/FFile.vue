@@ -25,11 +25,6 @@
             class="pull-up cursor-pointer ml-2"
             :src="previewUrl"
           />
-          <b-avatar
-            v-else
-            class="pull-up cursor-pointer ml-2"
-            :src="previewImg"
-          />
         </div>
       </b-input-group>
     </b-form-group>
@@ -107,10 +102,6 @@ export default {
           value: val
         })
       }
-    },
-    previewImg() {
-      const fields = this.$store.getters[`${this.moduleName}/fields`]
-      return `${process.env.IMG_PATH}/${this.preview}/${fields[this.storeKey]}`
     }
   },
   methods: {

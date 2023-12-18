@@ -52,7 +52,7 @@ export default {
       return `/${process.env.LOGO}`
     },
     userImage() {
-      return `${process.env.IMG_PATH}/users/${this.$auth.user.photo}`
+      return '/logo.png'
     }
   },
   methods: {

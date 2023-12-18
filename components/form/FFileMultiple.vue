@@ -34,7 +34,7 @@
             :src="file.src"
           />
         </b-avatar-group>
-        <b-avatar-group
+        <!-- <b-avatar-group
           v-else-if="previewImgs.length"
           size="32px"
           class="preview-img"
@@ -46,7 +46,7 @@
             class="pull-up"
             :src="file"
           />
-        </b-avatar-group>
+        </b-avatar-group> -->
         <b-avatar-group
           v-else
           size="32px"
@@ -135,14 +135,14 @@ export default {
           value: val
         })
       }
-    },
-    previewImgs() {
-      const fields = this.$store.getters[`${this.moduleName}/fields`]
-      const arr = fields[this.storeKey] || []
-      return arr
-        .filter(Boolean)
-        .map(img => `${process.env.IMG_PATH}/${this.preview}/${img}`)
     }
+    // previewImgs() {
+    //   const fields = this.$store.getters[`${this.moduleName}/fields`]
+    //   const arr = fields[this.storeKey] || []
+    //   return arr
+    //     .filter(Boolean)
+    //     .map(img => `${process.env.IMG_PATH}/${this.preview}/${img}`)
+    // }
   },
   methods: {
     async handleImgSrc(event) {

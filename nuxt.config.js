@@ -145,11 +145,11 @@ export default {
         },
         endpoints: {
           login: {
-            url: '/users/login',
+            url: '/auth/login',
             method: 'post'
           },
-          user: { url: '/users/me', method: 'get' }
-          // user: false
+          // user: { url: '/users/me', method: 'get' }
+          user: false
         }
       }
     },
@@ -169,8 +169,7 @@ export default {
     BASE_URL: process.env.BASE_URL,
     APP_TITLE: process.env.APP_TITLE,
     BROWSER_TITLE: process.env.BROWSER_TITLE,
-    LOGO: process.env.LOGO,
-    IMG_PATH: process.env.IMG_PATH
+    LOGO: process.env.LOGO
   },
 
   server: {
@@ -189,5 +188,5 @@ export default {
     babel: {
       compact: true
     }
-  },
+  }
 }

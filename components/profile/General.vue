@@ -9,13 +9,13 @@
         :src="avatar"
         square
       />
-      <b-avatar
+      <!-- <b-avatar
         v-else
         class="border border-1 rounded"
         size="70px"
         :src="fieldValue"
         square
-      />
+      /> -->
 
       <b-media-body class="mt-2 ml-75">
         <!-- upload button -->
@@ -100,18 +100,18 @@ export default {
     }
   },
   computed: {
-    fieldValue: {
-      get() {
-        const fields = this.$store.getters[`${this.moduleName}/fields`]
-        return `${process.env.IMG_PATH}/users/${fields.photo}`
-      },
-      set(val) {
-        this.$store.commit(`${this.moduleName}/setFieldValue`, {
-          key: 'photo',
-          value: val
-        })
-      }
-    }
+    // fieldValue: {
+    //   get() {
+    //     const fields = this.$store.getters[`${this.moduleName}/fields`]
+    //     return `${process.env.IMG_PATH}/users/${fields.photo}`
+    //   },
+    //   set(val) {
+    //     this.$store.commit(`${this.moduleName}/setFieldValue`, {
+    //       key: 'photo',
+    //       value: val
+    //     })
+    //   }
+    // }
   },
   methods: {
     resetForm() {},
