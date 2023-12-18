@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/api/*"
-  to = "https://resplendent-melomakarona-1d4ed2.netlify.app/:splat"
-  status = 200
