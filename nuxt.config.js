@@ -167,21 +167,21 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: '/' // Set the base URL to '/'
-    // baseURL: process.env.BASE_URL
+    // baseURL: '/' // Set the base URL to '/'
+    baseURL: process.env.BASE_URL
   },
   // axios: {
   //   proxy: true,
   //   baseURL: process.env.BASE_URL
   // },
 
-  proxy: {
-    '/api': {
-      target: process.env.BASE_URL, // Your external API URL
-      pathRewrite: { '^/api': '/api' }, // Rewrite '/api' to '/api' in the request
-      changeOrigin: true
-    }
-  },
+  // proxy: {
+  //   '/api': {
+  //     target: process.env.BASE_URL, // Your external API URL
+  //     pathRewrite: { '^/api': '/api' }, // Rewrite '/api' to '/api' in the request
+  //     changeOrigin: true
+  //   }
+  // },
 
   env: {
     BASE_URL: process.env.BASE_URL,
