@@ -53,9 +53,6 @@ export default {
       loading: true
     }
   },
-  beforeCreate() {
-    console.warn('test', this.$auth)
-  },
 
   mounted() {
     // eslint-disable-next-line arrow-parens

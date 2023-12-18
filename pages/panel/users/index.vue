@@ -22,9 +22,7 @@ export default {
   name: 'Users',
   layout: 'panel',
   async asyncData({ $axios, store }) {
-    const data = await $axios.$get('/users', {
-      params: { role: 'user' }
-    })
+    const data = await $axios.$get('/users')
     store.dispatch('panel/users/getAllDataFromApi', data)
   },
   data() {

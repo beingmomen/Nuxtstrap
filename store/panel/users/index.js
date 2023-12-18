@@ -66,6 +66,7 @@ export const actions = {
   filtersChange({ state, dispatch }, payload) {
     dispatch('getDataByQuery')
   },
+
   async changeState({ state, dispatch }, { id, active }) {
     await this.$axios.$patch(`${state.apiModule}/${id}`, {
       active
