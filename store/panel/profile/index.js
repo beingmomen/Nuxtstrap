@@ -24,7 +24,7 @@ export const actions = {
     const storePath = 'handlerFactory/handleFormData'
     const data = await dispatch(storePath, state.fields, { root: true })
     await this.$axios.$patch(`${state.apiModule}/updateMe`, data)
-    await this.$auth.fetchUser()
+    // await this.$auth.fetchUser()
   },
 
   showSingleData({ state, commit }, payload) {

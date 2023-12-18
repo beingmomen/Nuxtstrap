@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  middleware: ['mode', 'lang', 'loggedOut']
+  middleware: ['mode', 'lang', 'loggedOut'],
+  beforeCreate() {
+    console.warn('test', this.$auth)
+  }
 }
 </script>
 

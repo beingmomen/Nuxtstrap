@@ -96,6 +96,7 @@ export default {
     'nuxt-vue-select',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/proxy',
     '@nuxtjs/i18n',
     'cookie-universal-nuxt',
     [
@@ -138,18 +139,21 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'token'
+          property: 'token',
+          global: true
         },
         user: {
           property: 'data.data'
         },
         endpoints: {
           login: {
-            url: '/auth/login',
+            url: '/api/auth/login',
+            // url: '/users/login',
             method: 'post'
           },
           // user: { url: '/users/me', method: 'get' }
-          user: false
+          user: { url: '/api/session', method: 'get' }
+          // user: false
         }
       }
     },
@@ -163,8 +167,22 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.BASE_URL
+    baseURL: '/' // Set the base URL to '/'
+    // baseURL: process.env.BASE_URL
   },
+  // axios: {
+  //   proxy: true,
+  //   baseURL: process.env.BASE_URL
+  // },
+
+  proxy: {
+    '/api': {
+      target: process.env.BASE_URL, // Your external API URL
+      pathRewrite: { '^/api': '/api' }, // Rewrite '/api' to '/api' in the request
+      changeOrigin: true
+    }
+  },
+
   env: {
     BASE_URL: process.env.BASE_URL,
     APP_TITLE: process.env.APP_TITLE,
