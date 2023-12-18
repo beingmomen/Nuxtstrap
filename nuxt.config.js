@@ -143,7 +143,7 @@ export default {
           global: true
         },
         user: {
-          property: 'data.data'
+          property: 'data'
         },
         endpoints: {
           login: {
