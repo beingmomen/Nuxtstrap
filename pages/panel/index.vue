@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>Index</div>
 </template>
 
 <script>

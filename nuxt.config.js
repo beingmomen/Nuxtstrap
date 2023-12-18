@@ -152,8 +152,8 @@ export default {
             method: 'post'
           },
           // user: { url: '/users/me', method: 'get' }
-          user: { url: '/api/session', method: 'get' }
-          // user: false
+          // user: { url: '/api/session', method: 'get' }
+          user: false
         }
       }
     },

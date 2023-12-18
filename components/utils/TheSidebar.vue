@@ -24,21 +24,11 @@
           route="panel"
         />
         <!-- <ExtendedBSDivider :title="$t(`more_page`)" /> -->
-        <ExtendedBSLink
-          :title="$t(`admins`)"
-          icon="users"
-          icon-type="awesome"
-          route="/panel/admins"
-        />
+
         <ExtendedBSLink
           :title="$t(`users`)"
           icon="users"
           route="/panel/users"
-        />
-        <ExtendedBSLink
-          :title="$t(`categories`)"
-          icon="grid"
-          route="/panel/categories"
         />
       </ul>
     </div>
