@@ -11,7 +11,7 @@ export const getters = {
 
 export const actions = {
   async submit({ state }) {
-    const { data } = await this.$axios.post('/auth/login', state.fields)
+    const { data } = await this.$axios.post('/api/auth/login', state.fields)
 
     console.warn('data', data)
 
