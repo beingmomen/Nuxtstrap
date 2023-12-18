@@ -147,13 +147,13 @@ export default {
         },
         endpoints: {
           login: {
-            url: '/api/auth/login',
+            url: '/auth/login',
             // url: '/users/login',
             method: 'post'
           },
           // user: { url: '/users/me', method: 'get' }
-          // user: { url: '/api/session', method: 'get' }
-          user: false
+          user: { url: '/session', method: 'get' }
+          // user: false
         }
       }
     },
