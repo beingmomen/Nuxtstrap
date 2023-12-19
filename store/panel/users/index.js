@@ -7,6 +7,9 @@ export const state = () => ({
     search: null,
     page: null
   },
+  lists: {
+    firstList: []
+  },
   fields: {
     name: null,
     email: null,
@@ -14,12 +17,17 @@ export const state = () => ({
     passwordConfirm: null,
     phoneCode: '+20',
     phone: null
+  },
+  display: {
+    count: 5
   }
 })
 
 export const getters = {
   table: state => state.table,
-  fields: state => state.fields
+  lists: state => state.lists,
+  fields: state => state.fields,
+  display: state => state.display
 }
 
 export const actions = {
@@ -92,7 +100,13 @@ export const mutations = {
   setTableValue(state, { key, value }) {
     state.table[key] = value
   },
+  setListsValue(state, { key, value }) {
+    state.lists[key] = value
+  },
   setFieldValue(state, { key, value }) {
     state.fields[key] = value
+  },
+  setDisplayValue(state, { key, value }) {
+    state.display[key] = value
   }
 }
