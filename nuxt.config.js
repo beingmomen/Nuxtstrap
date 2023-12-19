@@ -3,8 +3,8 @@ export default {
   head: {
     title: process.env.BROWSER_TITLE,
     htmlAttrs: {
-      lang: 'en',
-      dir: 'ltr'
+      lang: 'ar',
+      dir: 'rtl'
     },
     bodyAttrs: {
       class: 'light-layout'
@@ -130,7 +130,7 @@ export default {
         name_ar: 'الإنجليزية'
       }
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'ar',
     detectBrowserLanguage: false
   },
 

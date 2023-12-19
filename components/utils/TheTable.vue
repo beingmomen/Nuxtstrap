@@ -97,7 +97,7 @@
             <UtilsTheFIcon
               class="text-danger ml-1"
               icon="trash"
-              @click.native="showMsgBoxTwo(data)"
+              @click.native="showMsgBoxToDelete(data)"
             />
           </span>
         </template>
@@ -225,7 +225,7 @@ export default {
     }
   },
   methods: {
-    showMsgBoxTwo(data) {
+    showMsgBoxToDelete(data) {
       this.$bvModal
         .msgBoxConfirm(
           `${this.$t('modals.delete_msg')}( ${data.item[this.delKey]} )`,
@@ -240,7 +240,16 @@ export default {
             centered: false
           }
         )
-        .then((value, i) => value && this.delete(data.item.id))
+        .then((value, i) => {
+          if (value) {
+            this.delete(data.item._id)
+          }
+        })
+    },
+    async delete(id) {
+      await this.$store.dispatch(`${this.moduleName}/deleteFromDB`, id)
+      await this.$nuxt.refresh()
+      await this.$toast.success(this.$t('msg.delete'))
     },
     async changeState(data, active) {
       await this.$store.dispatch(`${this.moduleName}/changeState`, {
@@ -252,12 +261,6 @@ export default {
       } else {
         await this.$toast.success('تم إلغاء التفعيل')
       }
-    },
-    delete(id) {
-      this.$store.dispatch(`${this.moduleName}/deleteFromDB`, id).then(() => {
-        this.$nuxt.refresh()
-        this.$toast.success(this.$t('msg.delete'))
-      })
     }
   }
 }

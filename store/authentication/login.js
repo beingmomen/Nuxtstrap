@@ -11,12 +11,10 @@ export const getters = {
 
 export const actions = {
   async submit({ state }) {
-    const { data } = await this.$auth.loginWith('local', { data: state.fields })
+    await this.$auth.loginWith('local', { data: state.fields })
     const position = this.$i18n.locale === 'en' ? 'top-right' : 'top-left'
     const welcomeMessage = this.$i18n.locale === 'en' ? 'Welcome' : 'مرحبا بك'
     const message = `${welcomeMessage} ${this.$auth.user.name}`
-
-    console.warn('data data', data)
 
     this.$toast(message, {
       timeout: 3000,
