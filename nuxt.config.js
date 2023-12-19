@@ -148,11 +148,9 @@ export default {
         endpoints: {
           login: {
             url: '/auth/login',
-            // url: '/users/login',
             method: 'post'
           },
-          // user: { url: '/users/me', method: 'get' }
-          user: { url: '/session', method: 'get' }
+          user: { url: '/users/me', method: 'get' }
           // user: false
         }
       }
