@@ -25,7 +25,7 @@ export const getters = {
 export const actions = {
   getAllDataFromApi({ commit }, { total, data }) {
     commit('setTableValue', { key: 'totalItems', value: total })
-    commit('setTableValue', { key: 'allData', value: data.data })
+    commit('setTableValue', { key: 'allData', value: data })
   },
 
   addDataToDB({ state }) {
@@ -52,9 +52,7 @@ export const actions = {
   async getDataByQuery({ state, dispatch }) {
     const params = {
       page: state.table.page || 1,
-      search: state.table.search,
-      active: state.table.filters,
-      role: 'user'
+      search: state.table.search
     }
     const data = await this.$axios.$get(state.apiModule, {
       params

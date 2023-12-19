@@ -3,9 +3,7 @@
     <template #content>
       <UtilsTheTable
         :title="$t('users')"
-        :filter="true"
-        filter-list="activeList"
-        filter-key="filters"
+        :filter="false"
         :headers="headers"
         :create="false"
         :show="false"
@@ -36,6 +34,13 @@ export default {
       ],
       headers: [
         {
+          key: 'avatar',
+          label: this.$t('image'),
+          formatter: (value, key, item) => {
+            return item.photo
+          }
+        },
+        {
           key: 'name',
           label: this.$t('name')
         },
@@ -44,17 +49,14 @@ export default {
           label: this.$t('email')
         },
         {
+          key: 'role',
+          label: this.$t('role')
+        },
+        {
           key: 'phone',
           label: this.$t('phone')
         },
-        {
-          key: 'active',
-          label: this.$t('state')
-          // formatter: (value, key, item) => {
-          //   const str = value ? this.$t('active') : this.$t('notActive')
-          //   return str
-          // }
-        },
+
         {
           key: 'actions',
           label: this.$t('actions')

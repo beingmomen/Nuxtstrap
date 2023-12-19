@@ -1,7 +1,15 @@
 <template>
-  <b-col lg="3" md="5" sm="6" class="px-0 order-sm-3 order-md-3 mb-2">
+  <b-col
+    lg="3"
+    md="5"
+    sm="6"
+    class="px-0 order-sm-3 order-md-3 mb-2"
+  >
     <b-form-group class="h-100 mb-0">
-      <b-input-group size="md" class="table-search">
+      <b-input-group
+        size="md"
+        class="table-search"
+      >
         <b-form-input
           id="filterInput"
           v-model="fieldValue"
@@ -9,6 +17,7 @@
           type="search"
           :placeholder="$t('inputs.searchPlaceholder')"
           @input="change"
+          @keyup.enter="searchData()"
         />
         <b-input-group-append>
           <b-button
