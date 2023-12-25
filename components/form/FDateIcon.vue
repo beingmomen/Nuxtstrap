@@ -3,6 +3,7 @@
     :lg="lg"
     :md="md"
     :sm="sm"
+    class="date-picker-form"
   >
     <b-form-group :label="label">
       <b-input-group class="">
