@@ -59,6 +59,17 @@
             {{ data.value }}
           </b-link>
         </template>
+
+        <template #cell(role)="data">
+          <b-button
+            :variant="filterRole(data.value)"
+            class="text-capitalize"
+            @click="showChangeRoleModal(data)"
+          >
+            {{ $t(data.value) }}
+          </b-button>
+        </template>
+
         <template #cell(category)="data">
           <b-link to="">
             {{ data.value }}
@@ -108,6 +119,34 @@
         </template>
       </b-table>
 
+      <b-modal
+        ref="changeRole"
+        :title="$t('changeRole')"
+        :ok-title="$t('buttons.yes')"
+        :cancel-title="$t('buttons.no')"
+        @ok="changeUserRole"
+      >
+        <p class="py-1">
+          {{ $t('changeRoleConfirm') }}
+          (
+          <span class="text-primary">{{ currentUser?.name }}</span>
+          )
+        </p>
+
+        <b-form-group
+          v-slot="{ ariaDescribedby }"
+          :label="$t('roles')"
+        >
+          <b-form-radio-group
+            id="radio-group-1 mt-4"
+            v-model="selectedRole"
+            :options="lists.rolesList"
+            :aria-describedby="ariaDescribedby"
+            name="radio-options"
+          />
+        </b-form-group>
+      </b-modal>
+
       <HelpersTLottie
         v-if="!table.allData.length"
         :title="title"
@@ -134,7 +173,7 @@
       :title="title"
       :path="path"
       :lottie="lottie"
-      :create="true"
+      :create="create"
     />
   </b-card>
 </template>
@@ -206,13 +245,18 @@ export default {
   data() {
     return {
       currentPage: 1,
-      loading: false
+      loading: false,
+      currentUser: null,
+      selectedRole: null
     }
   },
 
   computed: {
     table() {
       return this.$store.getters[`${this.moduleName}/table`]
+    },
+    lists() {
+      return this.$store.getters[`${this.moduleName}/lists`]
     }
   },
   watch: {
@@ -225,6 +269,19 @@ export default {
     }
   },
   methods: {
+    filterRole(value) {
+      switch (value) {
+        case 'admin':
+          return 'danger'
+        case 'user':
+          return 'success'
+        case 'acc':
+          return 'warning'
+        default:
+          return 'primary'
+      }
+    },
+
     showMsgBoxToDelete(data) {
       this.$bvModal
         .msgBoxConfirm(
@@ -250,6 +307,17 @@ export default {
       await this.$store.dispatch(`${this.moduleName}/deleteFromDB`, id)
       await this.$nuxt.refresh()
       await this.$toast.success(this.$t('msg.delete'))
+    },
+    showChangeRoleModal(data) {
+      this.currentUser = data.item
+      this.selectedRole = data.item.role
+      this.$refs.changeRole.show()
+    },
+    async changeUserRole() {
+      await this.$store.dispatch(`${this.moduleName}/changeUserRole`, {
+        id: this.currentUser._id,
+        role: this.selectedRole
+      })
     },
     async changeState(data, active) {
       await this.$store.dispatch(`${this.moduleName}/changeState`, {

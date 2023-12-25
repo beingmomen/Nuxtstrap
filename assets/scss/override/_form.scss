@@ -111,6 +111,13 @@
           }
         }
       }
+      .phone-input {
+        border-top-left-radius: 0.357rem !important;
+        border-bottom-left-radius: 0.357rem !important;
+        &::placeholder {
+          text-align: right !important;
+        }
+      }
     }
   }
 }

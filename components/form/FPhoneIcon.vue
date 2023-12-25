@@ -19,11 +19,12 @@
           <b-form-input
             id="phone"
             v-model="fieldValue"
+            class="phone-input"
             placeholder="1234 567 8900"
             :disabled="disabled"
             :type="type"
           />
-          <b-input-group-append class="phone-select" is-text>
+          <b-input-group-append v-if="code" class="phone-select" is-text>
             <FormFVSelectPhone
               :module-name="moduleName"
               label-select="display"
@@ -64,6 +65,10 @@ export default {
       default: null
     },
     required: {
+      type: Boolean,
+      default: false
+    },
+    code: {
       type: Boolean,
       default: false
     },
