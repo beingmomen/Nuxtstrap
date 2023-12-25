@@ -17,6 +17,14 @@ html {
       &.top-left {
         // margin-inline-start: auto !important;
         margin-right: unset !important;
+        flex-direction: row-reverse !important;
+        text-align: start !important;
+
+        svg {
+          margin: unset !important;
+          margin-inline-end: 2rem !important;
+          margin-block: auto !important;
+        }
       }
     }
   }
