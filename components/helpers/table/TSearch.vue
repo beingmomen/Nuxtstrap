@@ -22,10 +22,15 @@
         <b-input-group-append>
           <b-button
             class="search-btn-table rounded-end"
-            :disabled="!fieldValue"
+            :disabled="!fieldValue || searchLoading"
             @click="searchData()"
           >
             {{ $t('buttons.search') }}
+            <b-spinner
+              v-if="searchLoading"
+              class="mx-1"
+              small
+            />
           </b-button>
         </b-input-group-append>
       </b-input-group>
@@ -39,6 +44,12 @@ export default {
     moduleName: {
       type: String,
       default: null
+    }
+  },
+
+  data() {
+    return {
+      searchLoading: false
     }
   },
 
@@ -58,8 +69,10 @@ export default {
   },
 
   methods: {
-    searchData() {
-      this.$store.dispatch(`${this.moduleName}/getDataByQuery`)
+   async searchData() {
+      this.searchLoading = true
+      await this.$store.dispatch(`${this.moduleName}/getDataByQuery`)
+      this.searchLoading = false
     },
     change() {
       this.fieldValue || this.searchData()
