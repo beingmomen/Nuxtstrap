@@ -8,11 +8,7 @@ export const state = () => ({
     page: null,
   },
   lists: {
-    rolesList: [
-      { value: "admin", text: "Admin" },
-      { value: "acc", text: "Accountant" },
-      { value: "user", text: "User" },
-    ],
+    rolesList: [],
   },
   fields: {},
   display: {},

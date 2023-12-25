@@ -140,7 +140,7 @@
           <b-form-radio-group
             id="radio-group-1 mt-4"
             v-model="selectedRole"
-            :options="lists.rolesList"
+            :options="rolesList"
             :aria-describedby="ariaDescribedby"
             name="radio-options"
           />
@@ -255,8 +255,13 @@ export default {
     table() {
       return this.$store.getters[`${this.moduleName}/table`]
     },
-    lists() {
-      return this.$store.getters[`${this.moduleName}/lists`]
+    rolesList() {
+      const roles = [
+        { value: 'admin', text: this.$t('admin') },
+        { value: 'acc', text: this.$t('acc') },
+        { value: 'user', text: this.$t('user') }
+      ]
+      return roles
     }
   },
   watch: {
