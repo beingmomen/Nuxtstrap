@@ -33,7 +33,8 @@
     "vue-cleave-component": "^3.0.2",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
-    "vue-toastification": "^1.7.14"
+    "vue-toastification": "^1.7.14",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",

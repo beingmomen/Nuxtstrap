@@ -56,6 +56,7 @@ export default {
   plugins: [
     "~/plugins/mixins/index.js",
     "~/plugins/settings/layout.js",
+    { src: "~/plugins/components/datepicker.js", mode: "client" },
     { src: "~/plugins/settings/lottie-player.js", mode: "client" },
     "~/plugins/settings/vee-validate.js",
     "~/plugins/catchError.js",
