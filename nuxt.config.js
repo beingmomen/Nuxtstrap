@@ -54,6 +54,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "~/plugins/mixins/index.js",
     "~/plugins/settings/layout.js",
     { src: "~/plugins/settings/lottie-player.js", mode: "client" },
     "~/plugins/settings/vee-validate.js",
