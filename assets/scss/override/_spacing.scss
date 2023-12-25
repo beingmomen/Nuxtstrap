@@ -1,41 +1,50 @@
 :dir(rtl) {
-  .ml-auto,
-  .mx-auto {
+  .ml-auto {
     margin-left: unset !important;
     margin-right: auto !important;
   }
 
   @media (min-width: 992px) {
-    .ml-lg-auto,
-    .mx-lg-auto {
+    .ml-lg-auto {
       margin-left: unset !important;
       margin-right: auto !important;
     }
 
-    .mr-lg-auto,
-    .mx-lg-auto {
+    .mr-lg-auto {
       margin-right: unset !important;
       margin-left: auto !important;
     }
   }
 
-  .ml-50,
-  .mx-50 {
+  .ml-50 {
     margin-left: unset !important;
     margin-right: 0.5rem !important;
   }
 
-  .ml-1,
-  .mx-1 {
+  .ml-1 {
     margin-left: unset !important;
     margin-right: 1rem !important;
   }
 
-  .ml-2,
-  .mx-2 {
+  .ml-2 {
     margin-left: unset !important;
     margin-right: 1.5rem !important;
   }
+
+  .mr-1 {
+    margin-left: 1rem !important;
+    margin-right: unset !important;
+  }
+
+  .mr-2 {
+    margin-left: 1.5rem !important;
+    margin-right: unset !important;
+  }
+
+  // .mx-2 {
+  //   margin-left: unset !important;
+  //   margin-right: 1.5rem !important;
+  // }
 
   .text-right {
     text-align: left !important;

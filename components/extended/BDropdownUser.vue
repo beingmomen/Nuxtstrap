@@ -15,7 +15,7 @@
         </div>
         <b-avatar
           size="40"
-          :src="userImage || logo"
+          :src="$auth.user.photo || userImage || logo"
           variant="light-primary"
           badge
           class="badge-minimal"

@@ -13,10 +13,11 @@
           <!-- title -->
           <template #title>
             <UtilsTheFIcon
+              class="mr-1"
               icon="user"
               height="22.33"
             />
-            <span class="font-weight-bold">General</span>
+            <span class="font-weight-bold">{{ $t('general') }}</span>
           </template>
 
           <ProfileGeneral />
@@ -28,10 +29,11 @@
           <!-- title -->
           <template #title>
             <UtilsTheFIcon
+              class="mr-1"
               icon="lock"
               height="22.33"
             />
-            <span class="font-weight-bold">Change Password</span>
+            <span class="font-weight-bold">{{ $t('changePassword') }}</span>
           </template>
 
           <ProfileAccountSettingPassword />

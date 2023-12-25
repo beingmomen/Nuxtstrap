@@ -3,11 +3,9 @@
     <!-- media -->
     <b-media no-body>
       <b-avatar
-        v-if="avatar"
-        class="border border-1 rounded"
+        class="rounded"
         size="70px"
-        :src="avatar"
-        square
+        :src="$auth.user.photo"
       />
       <!-- <b-avatar
         v-else
@@ -17,8 +15,8 @@
         square
       /> -->
 
-      <b-media-body class="mt-2 ml-75">
-        <!-- upload button -->
+      <!-- upload button -->
+      <!-- <b-media-body class="mt-2 ml-75">
         <b-button
           variant="primary"
           size="sm"
@@ -34,8 +32,8 @@
           plain
           @input="inputImageRenderer"
         />
-        <!--/ upload button -->
-      </b-media-body>
+      </b-media-body> -->
+      <!--/ upload button -->
     </b-media>
     <!--/ media -->
 
@@ -54,7 +52,7 @@
           icon="mail"
           store-key="email"
         />
-        <FormFVSelectIcon
+        <!-- <FormFVSelectIcon
           :label="$t('country')"
           icon="globe"
           label-select="display"
@@ -63,7 +61,7 @@
           list-key="countries"
           :module-name="moduleName"
           global
-        />
+        /> -->
 
         <FormFPhoneIcon
           :label="$t('phone')"
