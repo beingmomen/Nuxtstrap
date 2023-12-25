@@ -30,7 +30,7 @@
           sm="8"
           md="6"
           lg="12"
-          class="px-xl-2 mx-auto"
+          class="px-xl-2 mx-auto text-start"
         >
           <b-card-title
             title-tag="h2"
