@@ -9,3 +9,15 @@ html {
 .text-start {
   text-align: start !important;
 }
+
+.Vue-Toastification__container {
+  &.top-left {
+    width: unset !important;
+    .Vue-Toastification__toast--default {
+      &.top-left {
+        // margin-inline-start: auto !important;
+        margin-right: unset !important;
+      }
+    }
+  }
+}
