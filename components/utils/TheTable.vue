@@ -14,6 +14,7 @@
             :filter-list-global="filterListGlobal"
             :label-select="labelSelect"
             :store-key="filterKey"
+            :change="changeFilter"
           />
 
           <!-- Search -->
@@ -195,6 +196,10 @@ export default {
     search: {
       type: Boolean,
       default: true
+    },
+    changeFilter: {
+      type: Boolean,
+      default: false
     },
     filter: {
       type: Boolean,
