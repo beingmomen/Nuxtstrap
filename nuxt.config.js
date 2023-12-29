@@ -57,6 +57,7 @@ export default {
     "~/plugins/mixins/index.js",
     "~/plugins/settings/layout.js",
     { src: "~/plugins/components/datepicker.js", mode: "client" },
+    { src: "~/plugins/components/vCalendar.js", mode: "client" },
     { src: "~/plugins/settings/lottie-player.js", mode: "client" },
     "~/plugins/components/fontawesome.js",
     "~/plugins/settings/vee-validate.js",
