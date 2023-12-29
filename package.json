@@ -31,6 +31,7 @@
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
     "nuxt-vue-select": "^0.1.4",
+    "v-calendar": "^2.4.2",
     "vee-validate": "3",
     "vue": "^2.7.10",
     "vue-cleave-component": "^3.0.2",
