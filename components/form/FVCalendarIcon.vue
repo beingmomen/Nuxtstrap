@@ -26,10 +26,11 @@
         >
           <template #default="{ inputValue, inputEvents }">
             <input
-              class="bg-white border px-2 rounded w-100 cursor-pointer"
+              class="VCalendar border px-2 rounded w-100 cursor-pointer"
               style="height: 40px"
               placeholder="YYYY-MM-DD"
               :value="inputValue"
+              :disabled="disabled"
               v-on="inputEvents"
             />
           </template>

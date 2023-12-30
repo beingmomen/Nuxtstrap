@@ -121,6 +121,13 @@
       }
     }
   }
+
+  .VCalendar {
+    border-top-left-radius: 0.357rem !important;
+    border-bottom-left-radius: 0.357rem !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
 }
 
 .v-select {
@@ -128,5 +135,11 @@
     .vs__dropdown-toggle {
       border-radius: 0.357rem !important;
     }
+  }
+}
+
+.VCalendar {
+  &:disabled {
+    background-color: #ccc !important;
   }
 }
