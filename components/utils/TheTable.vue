@@ -34,7 +34,7 @@
         striped
         hover
         responsive
-        class="position-relative"
+        class="position-relative utils-the-table"
         :foot-clone="false"
         :current-page="currentPage"
         :fields="headers"

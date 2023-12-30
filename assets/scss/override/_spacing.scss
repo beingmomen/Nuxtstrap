@@ -50,3 +50,20 @@
     text-align: left !important;
   }
 }
+
+.td-fit {
+  text-wrap: nowrap;
+}
+
+.utils-the-table {
+  th {
+    font-size: 16px !important;
+    font-weight: 900;
+    text-wrap: nowrap;
+  }
+
+  td {
+    font-size: 16px !important;
+    font-weight: 900;
+  }
+}

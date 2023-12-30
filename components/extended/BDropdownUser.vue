@@ -11,7 +11,9 @@
           <p class="user-name font-weight-bolder fs-5 mb-0">
             {{ $auth.user.name || appTitle }}
           </p>
-          <span class="user-status">{{ $auth.user.role || $t('admin') }}</span>
+          <span class="user-status">
+            {{ $t($auth.user.role) || $t('admin') }}
+          </span>
         </div>
         <b-avatar
           size="40"
@@ -64,4 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.user-status {
+  font-family: 'Lemonada', cursive;
+}
 </style>
