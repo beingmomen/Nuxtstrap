@@ -122,3 +122,28 @@
     }
   }
 }
+
+
+.input-group-merge {
+  &.password-input {
+    input {
+      border-inline-end: none !important;
+      border-inline-start: 1px solid #d8d6de !important;
+      border-top-right-radius: 0.357rem !important;
+      border-bottom-right-radius: 0.357rem !important;
+      &::placeholder {
+        padding-inline-start: 13px;
+      }
+    }
+
+    .input-group-text {
+      border-inline-start: none !important;
+      margin-left: -1px !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-top-left-radius: 0.357rem !important;
+      border-bottom-left-radius: 0.357rem !important;
+      height: 37.98px !important;
+    }
+  }
+}

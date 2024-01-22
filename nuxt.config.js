@@ -67,7 +67,8 @@ export default {
     '~/plugins/settings/vee-validate.js',
     '~/plugins/catchError.js',
     '~/plugins/fetch.js',
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/mixins/ui/forms.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
