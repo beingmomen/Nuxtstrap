@@ -2,13 +2,7 @@
   <div>
     <div
       v-show="loading"
-      class="
-        vertical-layout
-        h-100
-        vertical-menu-modern
-        navbar-floating
-        footer-static
-      "
+      class="vertical-layout h-100 vertical-menu-modern navbar-static footer-static"
       :class="{
         'menu-expanded': makeLayoutCollapsed,
         'menu-collapsed': !makeLayoutCollapsed,
@@ -62,7 +56,7 @@ export default {
 
   mounted() {
     // eslint-disable-next-line arrow-parens
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
       if (e.target.classList.contains('menu-open')) {
         this.$store.dispatch('toggleSidebar')
       }

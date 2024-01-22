@@ -1,12 +1,16 @@
 <template>
   <div class="auth-wrapper auth-v2">
     <b-row class="auth-inner m-0">
-      <b-link
-        :to="localePath('/')"
-        class="brand-logo"
-      >
-        <!-- <UtilsTheLogo style="width: 160px" /> -->
-      </b-link>
+      <div class="auth-login">
+        <b-img
+          :src="logo"
+          alt="logo"
+          class="auth-logo"
+        />
+        <h2 class="brand-text text-primary mb-0">
+          {{ appTitle }}
+        </h2>
+      </div>
 
       <b-col
         lg="8"
@@ -30,15 +34,15 @@
           sm="8"
           md="6"
           lg="12"
-          class="px-xl-2 mx-auto"
+          class="px-xl-2 mx-auto text-start"
         >
           <b-card-title
             title-tag="h2"
-            class="font-weight-bold fs-3 mb-1"
+            class="bold fs-2 mb-1"
           >
             {{ welcome }}
           </b-card-title>
-          <b-card-text class="mb-2 fs-4">
+          <b-card-text class="mb-2 fs-5">
             {{ msg }}
           </b-card-text>
           <b-form
@@ -59,24 +63,15 @@
             </div>
 
             <b-button
-              v-if="disabled"
               type="submit"
-              class="mt-3 fs-4"
+              class="mt-3 fs-5"
               variant="primary"
               block
-            >
-              {{ btn }}
-            </b-button>
-            <b-button
-              v-else
-              type="submit"
-              class="mt-3 fs-4"
-              variant="primary"
-              block
-              disabled
+              :disabled="!disabled || !fields.username || !fields.password"
             >
               {{ btn }}
               <b-spinner
+                v-if="!disabled"
                 class="ml-1"
                 small
               />
@@ -128,12 +123,23 @@ export default {
       disabled: true
     }
   },
+  computed: {
+    appTitle() {
+      return process.env.APP_TITLE
+    },
+    logo() {
+      return `/${process.env.LOGO}`
+    },
+    fields() {
+      return this.$store.getters[`${this.moduleName}/fields`]
+    }
+  },
   methods: {
     async addDataToDB() {
       try {
         this.disabled = await false
         await this.$store.dispatch(`${this.moduleName}/submit`)
-        await this.$router.push(this.localePath(this.path))
+        // await this.$router.push(this.localePath(this.path))
       } catch (error) {
       } finally {
         this.disabled = true
@@ -152,4 +158,22 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/scss/vue/pages/page-auth.scss';
+
+.auth-login {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  top: 20px;
+  right: 20px;
+  .auth-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .brand-text {
+    margin-top: 18px;
+    font-weight: bold;
+  }
+}
 </style>

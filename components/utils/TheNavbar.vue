@@ -1,19 +1,12 @@
 
 <template>
   <div
-    class="
-      navbar
-      header-navbar
-      navbar navbar-shadow
-      align-items-center
-      navbar-light navbar-expand
-      floating-nav
-    "
+    class="navbar header-navbar navbar navbar-shadow align-items-center navbar-light navbar-expand navbar-static-top"
   >
     <div class="navbar-container d-flex content align-items-center">
       <ExtendedBToggleIcon :width="width" />
       <ul class="navbar-nav nav align-items-center ml-auto">
-        <ExtendedBDropdownLang />
+        <!-- <ExtendedBDropdownLang /> -->
         <ExtendedBDarkMode />
         <ExtendedBDropdownUser />
       </ul>
@@ -24,7 +17,7 @@
 <script>
 export default {
   filters: {
-    languageName (value) {
+    languageName(value) {
       switch (value) {
         case 'ar':
           return (value = 'Arabic')
@@ -41,7 +34,7 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       view: false,
       currentLang: '',
@@ -62,17 +55,17 @@ export default {
     }
   },
   computed: {
-    availableLocales () {
+    availableLocales() {
       // eslint-disable-next-line arrow-parens
-      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
     },
-    theLang () {
+    theLang() {
       // return (this.currentLang = this.$cookies.get(this.$config.i18nKey))
       return 'en'
     }
   },
   methods: {
-    switchLang (lang) {
+    switchLang(lang) {
       this.currentLang = lang
       this.$store.dispatch('toggleDir', lang)
       if (lang === 'ar') {

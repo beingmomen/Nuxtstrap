@@ -1,12 +1,5 @@
 export const state = () => ({
-  lists: {
-    countries: [],
-    categories: [],
-    activeList: [
-      { id: 0, name: 'Not Active' },
-      { id: 1, name: 'Active' }
-    ]
-  }
+  lists: {}
 })
 
 export const getters = {

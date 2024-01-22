@@ -2,7 +2,7 @@
   <li class="nav-item mr-auto w-100">
     <b-link
       class="navbar-brand w-100"
-      to="/"
+      to=""
     >
       <span class="brand-logo">
         <b-img
@@ -38,4 +38,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

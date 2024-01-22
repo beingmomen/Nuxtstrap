@@ -16,11 +16,22 @@
   }
 }
 
+// Custom--Override  -- Start
+
+.dark-layout {
+  .header-navbar {
+    background-color: #283046 !important;
+  }
+}
+
 .header-navbar {
+  background-color: #fff !important;
   padding: 0px;
   min-height: $navbar-height;
   font-family: $font-family-monospace;
-  transition: 300ms ease all, background 0s;
+  transition:
+    300ms ease all,
+    background 0s;
   z-index: 997;
 
   &.fixed-top {
@@ -80,8 +91,8 @@
   // static nav
   &.navbar-static-top {
     top: 0;
-    right: 0;
-    left: $menu-expanded-width;
+    inset-inline-end: 0;
+    inset-inline-start: $menu-expanded-width;
     width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
     background: transparent;
     box-shadow: none !important; // remove this if removing "menu-shadow" class
@@ -307,7 +318,9 @@
           }
 
           img {
-            box-shadow: 0 4px 8px 0 rgba($black, 0.12), 0 2px 4px 0 rgba($black, 0.08);
+            box-shadow:
+              0 4px 8px 0 rgba($black, 0.12),
+              0 2px 4px 0 rgba($black, 0.08);
           }
         }
 

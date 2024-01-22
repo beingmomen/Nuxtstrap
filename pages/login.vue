@@ -4,15 +4,15 @@
     :img="img"
     :welcome="`${$t('login.welcome')} ${appTitle}! 👋`"
     :msg="$t('login.please')"
-    :btn="$t('buttons.login')"
+    btn="الدخول"
     :module-name="moduleName"
-    :forgot="true"
+    :forgot="false"
   >
     <template #inputs>
       <FormFInputIcon
         :label="$t('email')"
-        store-key="email"
-        type="email"
+        store-key="username"
+        type="text"
         icon="mail"
         :module-name="moduleName"
         lg="12"
@@ -27,12 +27,6 @@
         lg="12"
         md="12"
       />
-    </template>
-    <template #pages>
-      <span class="fs-4">{{ $t('login.new_platform') }}</span>
-      <b-link :to="localePath('/auth/register')">
-        <span class="fs-4">&nbsp; {{ $t('login.new_account') }}</span>
-      </b-link>
     </template>
   </ContainersDoAuth>
 </template>

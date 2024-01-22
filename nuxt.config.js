@@ -3,8 +3,9 @@ export default {
   head: {
     title: process.env.BROWSER_TITLE,
     htmlAttrs: {
-      lang: 'en',
-      dir: 'ltr'
+      lang: 'ar',
+      dir: 'rtl',
+      class: 'arabic-dir'
     },
     bodyAttrs: {
       class: 'light-layout'
@@ -23,6 +24,13 @@ export default {
         href: `/${process.env.LOGO}`
       },
       {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css',
+        integrity:
+          'sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv',
+        crossorigin: 'anonymous'
+      },
+      {
         rel: 'preconnect',
         href: 'https://fonts.googleapis.com'
       },
@@ -32,15 +40,15 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap'
-      },
+        href: 'https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo&display=swap'
+      }
+    ],
+    scripts: [
       {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Cookie&display=swap'
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+        integrity:
+          'sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL',
+        crossorigin: 'anonymous'
       }
     ]
   },
@@ -129,7 +137,7 @@ export default {
         name_ar: 'الإنجليزية'
       }
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'ar',
     detectBrowserLanguage: false
   },
 
@@ -138,26 +146,26 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'token'
+          property: 'access_token'
         },
         user: {
-          property: 'data.data'
+          property: 'data'
         },
         endpoints: {
           login: {
-            url: '/users/login',
+            url: `${process.env.AUTH_LOGIN}/connect/token`,
             method: 'post'
           },
-          user: { url: '/users/me', method: 'get' }
+          user: { url: '/profile', method: 'get' }
           // user: false
         }
       }
     },
     redirect: {
-      login: '/panel',
+      login: '/',
       logout: '/login',
       callback: '/login',
-      home: '/panel'
+      home: '/'
     }
   },
 
@@ -166,15 +174,22 @@ export default {
     baseURL: process.env.BASE_URL
   },
   env: {
-    BASE_URL: process.env.BASE_URL,
+    AUTH_LOGIN: process.env.AUTH_LOGIN,
+    API_URL: process.env.API_URL,
     APP_TITLE: process.env.APP_TITLE,
     BROWSER_TITLE: process.env.BROWSER_TITLE,
-    LOGO: process.env.LOGO,
-    IMG_PATH: process.env.IMG_PATH
+    APP_NAME: process.env.APP_NAME,
+    PLACE: process.env.PLACE,
+    LOGO: process.env.LOGO
   },
 
   server: {
     port: process.env.PORT
+  },
+
+  loading: {
+    color: ' #7367f0',
+    height: '4px'
   },
 
   generate: {
@@ -189,5 +204,5 @@ export default {
     babel: {
       compact: true
     }
-  },
+  }
 }

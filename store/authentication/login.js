@@ -1,6 +1,6 @@
 export const state = () => ({
   fields: {
-    email: '',
+    username: '',
     password: ''
   }
 })
@@ -11,18 +11,19 @@ export const getters = {
 
 export const actions = {
   async submit({ state }) {
-    await this.$auth.loginWith('local', { data: state.fields })
-    const position = this.$i18n.locale === 'en' ? 'top-right' : 'top-left'
-    const welcomeMessage = this.$i18n.locale === 'en' ? 'Welcome' : 'مرحبا بك'
-    const message = `${welcomeMessage} ${this.$auth.user.name}`
+    // try {
+    const { fields } = state
 
-    this.$toast(message, {
-      timeout: 3000,
-      hideProgressBar: false,
-      position,
-      closeOnClick: false,
-      showCloseButtonOnHover: true
-    })
+    const params = new URLSearchParams()
+    params.append('grant_type', 'password')
+    params.append('client_id', 'client')
+    params.append('client_secret', '!QA2ws3ed')
+    params.append('AllowedScopes', 'application')
+    params.append('username', fields.username)
+    params.append('password', fields.password)
+    await this.$auth.loginWith('local', { data: params })
+
+    this.$toast.success('تم تسجيل الدخول بنجاح')
   }
 }
 

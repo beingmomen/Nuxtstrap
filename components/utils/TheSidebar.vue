@@ -10,7 +10,18 @@
   >
     <div class="navbar-header expanded w-100 d-flex align-items-center pl-1">
       <ul class="nav navbar-nav flex-row w-100">
-        <UtilsTheLogo max-width="55" />
+        <nuxt-link to="/">
+          <div class="auth-login">
+            <b-img
+              :src="logo"
+              alt="logo"
+              class="auth-logo"
+            />
+            <h2 class="brand-text text-primary mb-0">
+              {{ appTitle }}
+            </h2>
+          </div>
+        </nuxt-link>
       </ul>
     </div>
     <div class="shadow-bottom" />
@@ -23,18 +34,7 @@
           icon="home"
           route="panel"
         />
-        <!-- <ExtendedBSDivider :title="$t(`more_page`)" /> -->
-        <ExtendedBSLink
-          :title="$t(`admins`)"
-          icon="users"
-          icon-type="awesome"
-          route="/panel/admins"
-        />
-        <ExtendedBSLink
-          :title="$t(`users`)"
-          icon="users"
-          route="/panel/users"
-        />
+
         <ExtendedBSLink
           :title="$t(`categories`)"
           icon="grid"
@@ -70,8 +70,15 @@ export default {
     },
     logoWidth() {
       return this.$store.getters.getLogoWidth
+    },
+    appTitle() {
+      return process.env.APP_TITLE
+    },
+    logo() {
+      return `/${process.env.LOGO}`
     }
   },
+
   methods: {
     // toggleSidebar() {
     //   this.$store.dispatch('toggleSidebar')
@@ -89,5 +96,20 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.auth-login {
+  display: flex;
+  align-items: center;
+  .auth-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand-text {
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-inline-start: 20px;
+  }
+}
 </style>

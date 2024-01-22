@@ -7,8 +7,8 @@
 // 	Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
 
-@import '../bootstrap-extended/include'; // Bootstrap includes
-@import '../components/include'; // Components includes
+@import "../bootstrap-extended/include"; // Bootstrap includes
+@import "../components/include"; // Components includes
 
 .dark-layout {
   @at-root body#{&} {
@@ -273,10 +273,10 @@
     }
 
     &.navbar-static-top {
-      background-color: transparent !important;
+      // background-color: transparent !important; // Custom--Override
     }
 
-    &[class*='bg-'] {
+    &[class*="bg-"] {
       .navbar-nav {
         .nav-item {
           .nav-link {
@@ -490,13 +490,13 @@
         color: $theme-dark-body-color;
       }
     }
-    &:not([class*='breadcrumb-']) {
+    &:not([class*="breadcrumb-"]) {
       .breadcrumb-item + .breadcrumb-item {
         &:before {
           background-image: url(str-replace(
-            str-replace($chevron-right, 'currentColor', $theme-dark-body-color),
-            '#',
-            '%23'
+            str-replace($chevron-right, "currentColor", $theme-dark-body-color),
+            "#",
+            "%23"
           ));
         }
       }
@@ -508,9 +508,9 @@
     &.breadcrumb {
       .breadcrumb-item + .breadcrumb-item:before {
         background-image: url(str-replace(
-          str-replace($chevron-right, 'currentColor', $theme-dark-body-color),
-          '#',
-          '%23'
+          str-replace($chevron-right, "currentColor", $theme-dark-body-color),
+          "#",
+          "%23"
         ));
       }
     }
@@ -518,7 +518,7 @@
 
   // collapse
 
-  [class*='collapse-'] .card:not(:last-of-type) {
+  [class*="collapse-"] .card:not(:last-of-type) {
     border-color: $theme-dark-border-color;
   }
   // for shadow and bordered
@@ -547,19 +547,19 @@
         color: $theme-dark-body-color;
       }
     }
-    [data-toggle='collapse'] {
+    [data-toggle="collapse"] {
       &:after {
         background-image: url(str-replace(
-          str-replace($chevron-down, 'currentColor', $theme-dark-body-color),
-          '#',
-          '%23'
+          str-replace($chevron-down, "currentColor", $theme-dark-body-color),
+          "#",
+          "%23"
         ));
       }
       &:before {
         background-image: url(str-replace(
-          str-replace($chevron-up, 'currentColor', $theme-dark-body-color),
-          '#',
-          '%23'
+          str-replace($chevron-up, "currentColor", $theme-dark-body-color),
+          "#",
+          "%23"
         ));
       }
     }
@@ -567,7 +567,7 @@
 
   // buttons
   .btn {
-    &:not([class*='btn-']) {
+    &:not([class*="btn-"]) {
       color: $theme-dark-body-color;
     }
 
@@ -598,7 +598,7 @@
   }
 
   .btn-group-toggle {
-    label[class*='btn-outline-'] {
+    label[class*="btn-outline-"] {
       color: $primary !important;
     }
   }
@@ -637,7 +637,7 @@
   // modal
   .modal {
     .modal-header,
-    .modal-header[class*='bg-'] {
+    .modal-header[class*="bg-"] {
       // why removed !important? Not working if added bg-COLOR class with modal-header
       // background-color: $theme-dark-card-bg !important;
       background-color: $theme-dark-body-bg;
@@ -661,7 +661,7 @@
 
   //pagination
   .pagination {
-    &:not([class*='pagination-']) {
+    &:not([class*="pagination-"]) {
       .page-item {
         &.active {
           background-color: $theme-dark-pagination-bg;
@@ -693,7 +693,7 @@
       }
     }
 
-    &[class*='pagination-'] {
+    &[class*="pagination-"] {
       .page-item:not(.active) {
         .page-link {
           background-color: $theme-dark-pagination-bg;
@@ -724,18 +724,18 @@
       &.prev {
         .page-link:before {
           background-image: url(str-replace(
-            str-replace($chevron-left, 'currentColor', $theme-dark-body-color),
-            '#',
-            '%23'
+            str-replace($chevron-left, "currentColor", $theme-dark-body-color),
+            "#",
+            "%23"
           ));
         }
         &.disabled {
           .page-link {
             &:before {
               background-image: url(str-replace(
-                str-replace($chevron-left, 'currentColor', $theme-dark-text-muted-color),
-                '#',
-                '%23'
+                str-replace($chevron-left, "currentColor", $theme-dark-text-muted-color),
+                "#",
+                "%23"
               ));
             }
           }
@@ -745,18 +745,18 @@
       &.next {
         .page-link::after {
           background-image: url(str-replace(
-            str-replace($chevron-right, 'currentColor', $theme-dark-body-color),
-            '#',
-            '%23'
+            str-replace($chevron-right, "currentColor", $theme-dark-body-color),
+            "#",
+            "%23"
           ));
         }
         &.disabled {
           .page-link {
             &:after {
               background-image: url(str-replace(
-                str-replace($chevron-right, 'currentColor', $theme-dark-text-muted-color),
-                '#',
-                '%23'
+                str-replace($chevron-right, "currentColor", $theme-dark-text-muted-color),
+                "#",
+                "%23"
               ));
             }
           }
@@ -815,7 +815,7 @@
 
   // popover
   .popover {
-    &[x-placement='top'] {
+    &[x-placement="top"] {
       .arrow {
         &:before {
           border-top-color: $theme-dark-border-color;
@@ -826,7 +826,7 @@
       }
     }
 
-    &[x-placement='left'] {
+    &[x-placement="left"] {
       .arrow {
         &:before {
           border-left-color: $theme-dark-border-color;
@@ -837,7 +837,7 @@
       }
     }
 
-    &[x-placement='right'] {
+    &[x-placement="right"] {
       .arrow {
         &:before {
           border-right-color: $theme-dark-border-color;
@@ -879,7 +879,7 @@
   // list group
   .list-group {
     .list-group-item {
-      &:not([class*='list-group-item-']),
+      &:not([class*="list-group-item-"]),
       &.list-group-item-action {
         background-color: $theme-dark-card-bg;
         border-color: $theme-dark-border-color;
@@ -909,7 +909,7 @@
     }
 
     &.list-group-circle .list-group-item:after {
-      background-image: url(str-replace(str-replace($circle, 'currentColor', $theme-dark-body-color), '#', '%23'));
+      background-image: url(str-replace(str-replace($circle, "currentColor", $theme-dark-body-color), "#", "%23"));
     }
   }
 
@@ -923,7 +923,7 @@
   .avatar {
     background-color: $theme-dark-body-bg;
 
-    [class*='avatar-status-'] {
+    [class*="avatar-status-"] {
       border-color: $theme-dark-card-bg;
     }
   }
@@ -931,7 +931,9 @@
     .avatar {
       img,
       .avatar-content {
-        box-shadow: 0 0 0 2px $theme-dark-card-bg, inset 0 0 0 1px rgba($theme-dark-card-bg, 0.07);
+        box-shadow:
+          0 0 0 2px $theme-dark-card-bg,
+          inset 0 0 0 1px rgba($theme-dark-card-bg, 0.07);
       }
     }
   }
@@ -1098,7 +1100,7 @@
     }
 
     &:disabled,
-    &[readonly='readonly'] {
+    &[readonly="readonly"] {
       opacity: 0.5;
     }
   }
@@ -1172,11 +1174,11 @@
   }
 
   select.form-control {
-    &:not([multiple='multiple']) {
+    &:not([multiple="multiple"]) {
       background-image: url(str-replace(
-        str-replace($chevron-down, 'currentColor', $theme-dark-body-color),
-        '#',
-        '%23'
+        str-replace($chevron-down, "currentColor", $theme-dark-body-color),
+        "#",
+        "%23"
       ));
     }
   }
@@ -1258,7 +1260,7 @@
 
     .thead,
     tbody {
-      tr:not([class*='table-']) {
+      tr:not([class*="table-"]) {
         th,
         td {
           border-color: $theme-dark-border-color;
@@ -1314,7 +1316,7 @@
     tbody {
       tr {
         // for contextual classes
-        &[class*='table-'] {
+        &[class*="table-"] {
           td,
           th {
             background-color: unset;
@@ -1386,7 +1388,7 @@
       .buttons-pdf,
       .buttons-print,
       .btn-secondary,
-      [class*='buttons-'] {
+      [class*="buttons-"] {
         background-color: $theme-dark-body-bg !important;
         &:active {
           background-color: $primary !important;
@@ -1395,7 +1397,7 @@
       }
     }
     .dt-button-collection {
-      > div[role='menu'] {
+      > div[role="menu"] {
         box-shadow: $theme-dark-box-shadow;
       }
     }
@@ -1417,16 +1419,16 @@
         .sorting_desc {
           &:before {
             background-image: url(str-replace(
-              str-replace($chevron-up, 'currentColor', $theme-dark-body-color),
-              '#',
-              '%23'
+              str-replace($chevron-up, "currentColor", $theme-dark-body-color),
+              "#",
+              "%23"
             ));
           }
           &:after {
             background-image: url(str-replace(
-              str-replace($chevron-down, 'currentColor', $theme-dark-body-color),
-              '#',
-              '%23'
+              str-replace($chevron-down, "currentColor", $theme-dark-body-color),
+              "#",
+              "%23"
             ));
           }
         }
@@ -1513,7 +1515,7 @@
         background: $theme-dark-card-bg;
       }
 
-      span[ref='lbTotal'] {
+      span[ref="lbTotal"] {
         background-color: $theme-dark-pagination-bg;
         color: $theme-dark-body-color !important;
       }
@@ -1576,7 +1578,7 @@
 
   // list group circle for kb
   .list-group-circle {
-    .list-group-item:not([class*='list-group-item-']),
+    .list-group-item:not([class*="list-group-item-"]),
     .list-group-item-action {
       &:hover,
       &:focus,
@@ -1677,9 +1679,9 @@
         .email-info-dropup {
           .dropdown-toggle::after {
             background-image: url(str-replace(
-              str-replace($chevron-down, 'currentColor', $theme-dark-text-muted-color),
-              '#',
-              '%23'
+              str-replace($chevron-down, "currentColor", $theme-dark-text-muted-color),
+              "#",
+              "%23"
             ));
           }
         }
@@ -2300,7 +2302,7 @@
           .active {
             .nav-link {
               &.dropdown-toggle::after {
-                background-image: url(str-replace(str-replace($chevron-down, 'currentColor', $white), '#', '%23'));
+                background-image: url(str-replace(str-replace($chevron-down, "currentColor", $white), "#", "%23"));
               }
             }
           }
@@ -2308,9 +2310,9 @@
           .nav-link {
             &.dropdown-toggle::after {
               background-image: url(str-replace(
-                str-replace($chevron-down, 'currentColor', $theme-dark-body-color),
-                '#',
-                '%23'
+                str-replace($chevron-down, "currentColor", $theme-dark-body-color),
+                "#",
+                "%23"
               ));
             }
           }
@@ -2340,15 +2342,15 @@
           .dropdown-toggle {
             &::after {
               background-image: url(str-replace(
-                str-replace($chevron-right, 'currentColor', $theme-dark-body-color),
-                '#',
-                '%23'
+                str-replace($chevron-right, "currentColor", $theme-dark-body-color),
+                "#",
+                "%23"
               ));
             }
             &:hover,
             &:active {
               &::after {
-                background-image: url(str-replace(str-replace($chevron-right, 'currentColor', $white), '#', '%23'));
+                background-image: url(str-replace(str-replace($chevron-right, "currentColor", $white), "#", "%23"));
               }
             }
           }

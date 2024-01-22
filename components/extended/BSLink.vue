@@ -5,6 +5,7 @@
       class="d-flex align-items-center nav-item-link-style"
     >
       <UtilsTheFIcon
+        class="sidebar-icon"
         :icon-type="iconType"
         :icon="icon"
         height="22.33"

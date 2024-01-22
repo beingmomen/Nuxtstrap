@@ -9,13 +9,15 @@
       <template #button-content>
         <div class="d-sm-flex d-none user-nav align-items-start">
           <p class="user-name font-weight-bolder fs-5 mb-0">
-            {{ $auth.user.name || appTitle }}
+            {{ $auth.user.loginName || appTitle }}
           </p>
-          <span class="user-status">{{ $auth.user.role || $t('admin') }}</span>
+          <span class="user-status">
+            {{ $auth.user.name || $t('admin') }}
+          </span>
         </div>
         <b-avatar
           size="40"
-          :src="userImage || logo"
+          :src="logo"
           variant="light-primary"
           badge
           class="badge-minimal"
@@ -26,7 +28,7 @@
       <ExtendedBDropdownItem
         route="/panel/profile"
         icon="user"
-        :title="$t('navbar.profile')"
+        title="الحساب الشخصي"
       />
 
       <b-dropdown-divider />
