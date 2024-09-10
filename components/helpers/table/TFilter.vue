@@ -56,6 +56,10 @@ export default {
       type: Boolean,
       default: false
     },
+    filterListGlobal: {
+      type: Boolean,
+      default: false
+    },
     image: {
       type: Boolean,
       default: false
@@ -102,7 +106,12 @@ export default {
       }
     },
     list() {
-      const data = this.$store.getters['global/lists']
+      let data = []
+      if (this.filterListGlobal) {
+        data = this.$store.getters['global/lists']
+      } else {
+        data = this.$store.getters[`${this.moduleName}/lists`]
+      }
       return data[this.filterList]
     }
   },

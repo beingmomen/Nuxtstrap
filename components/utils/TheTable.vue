@@ -11,8 +11,10 @@
             v-if="filter"
             :module-name="moduleName"
             :filter-list="filterList"
+            :filter-list-global="filterListGlobal"
             :label-select="labelSelect"
             :store-key="filterKey"
+            :change="changeFilter"
           />
 
           <!-- Search -->
@@ -20,6 +22,7 @@
             v-if="search"
             :module-name="moduleName"
           />
+          <div v-else />
 
           <!-- Create Button -->
           <HelpersTableTButton
@@ -166,6 +169,10 @@ export default {
       type: String,
       default: 'name'
     },
+    filterListGlobal: {
+      type: Boolean,
+      default: false
+    },
     filterKey: {
       type: String,
       default: 'filters'
@@ -189,6 +196,10 @@ export default {
     search: {
       type: Boolean,
       default: true
+    },
+    changeFilter: {
+      type: Boolean,
+      default: false
     },
     filter: {
       type: Boolean,
