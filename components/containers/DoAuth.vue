@@ -34,11 +34,11 @@
         >
           <b-card-title
             title-tag="h2"
-            class="font-weight-bold fs-3 mb-1"
+            class="font-weight-bold fs-3 mb-1 text-start"
           >
             {{ welcome }}
           </b-card-title>
-          <b-card-text class="mb-2 fs-4">
+          <b-card-text class="mb-2 fs-4 text-start">
             {{ msg }}
           </b-card-text>
           <b-form

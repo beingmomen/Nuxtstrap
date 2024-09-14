@@ -16,7 +16,7 @@
               icon="user"
               height="22.33"
             />
-            <span class="font-weight-bold">General</span>
+             <span class="font-weight-bold">{{ $t('general') }}</span>
           </template>
 
           <ProfileGeneral />
@@ -31,7 +31,7 @@
               icon="lock"
               height="22.33"
             />
-            <span class="font-weight-bold">Change Password</span>
+                <span class="font-weight-bold">{{ $t('change_password') }}</span>
           </template>
 
           <ProfileAccountSettingPassword />

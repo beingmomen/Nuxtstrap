@@ -10,6 +10,7 @@
   >
     <template #inputs>
       <FormFInputIcon
+          class="text-start"
         :label="$t('email')"
         store-key="email"
         type="email"
@@ -20,6 +21,7 @@
       />
 
       <FormFPasswordIcon
+          class="text-start"
         :label="$t('password')"
         store-key="password"
         :module-name="moduleName"

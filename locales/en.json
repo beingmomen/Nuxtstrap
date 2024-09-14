@@ -7,6 +7,8 @@
   "en_name": "English Name",
   "email": "Email",
   "password": "Password",
+  "general": "General",
+  "change_password": "Change Password",
   "confirm_password": "Confirm Password",
   "phone": "Phone",
   "dashboard" : "Dashboard",

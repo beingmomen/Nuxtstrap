@@ -23,3 +23,7 @@ $b-table-sort-icon-bg-dark-descending: url("data:image/svg+xml,%3Csvg xmlns='htt
 // Custom--Override  -- Start
 
 @import "node_modules/@braid/vue-formulate/themes/snow/snow.scss";
+
+.text-start {
+    text-align: start !important;
+  }

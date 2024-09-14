@@ -7,14 +7,14 @@
         class="border border-1 rounded"
         size="70px"
         :src="avatar"
-        square
+
       />
       <b-avatar
         v-else
         class="border border-1 rounded"
         size="70px"
         :src="fieldValue"
-        square
+
       />
 
       <b-media-body class="mt-2 ml-75">

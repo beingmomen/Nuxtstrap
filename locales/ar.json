@@ -9,6 +9,8 @@
   "en_name": "الإسم بالإنجليزية",
   "email": "البريد الإلكترونى",
   "password": "كلمة المرور",
+  "general": "عام",
+  "change_password": "تغيير كلمة المرور",
   "confirm_password": "تأكيد كلمة المرور",
   "phone": "الهاتف",
   "dashboard" : "لوحة التحكم",

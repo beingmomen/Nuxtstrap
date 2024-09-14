@@ -1,7 +1,8 @@
 <template>
   <b-col :lg="lg" :md="md" :sm="sm">
     <b-form-group :label="label">
-      <b-input-group class="append-icon-input">
+      <!-- class="append-icon-input"  TODO: Add class to the input group for handle border radius -->
+      <b-input-group>
         <b-input-group>
           <b-input-group-prepend is-text>
             <UtilsTheFIcon :icon="icon" />
@@ -19,11 +20,12 @@
           <b-form-input
             id="phone"
             v-model="fieldValue"
+            class="text-start"
             placeholder="1234 567 8900"
             :disabled="disabled"
             :type="type"
           />
-          <b-input-group-append class="phone-select" is-text>
+          <!-- <b-input-group-append class="phone-select" is-text>
             <FormFVSelectPhone
               :module-name="moduleName"
               label-select="display"
@@ -31,7 +33,7 @@
               list-key="countries"
               global
             />
-          </b-input-group-append>
+          </b-input-group-append> -->
         </b-input-group>
       </b-input-group>
     </b-form-group>
